@@ -1,0 +1,59 @@
+/* ===== Banner Section ===== */
+.fitness-banner {
+  position: relative;
+  background: #256b3f;
+  padding: 100px 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ===== Text ===== */
+.banner-content {
+  max-width: 850px;
+  margin: auto;
+  z-index: 2;
+  position: relative;
+}
+
+.banner-content p {
+  color: #ffffff;
+  font-size: 26px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ===== Static Icons ===== */
+.icon {
+  position: absolute;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* Icon positions (adjust if needed) */
+.icon1 { top: 20px; left: 40px; }
+.icon2 { top: 80px; left: 220px; }
+.icon3 { bottom: 40px; left: 120px; }
+.icon4 { top: 40px; right: 220px; }
+.icon5 { bottom: 60px; right: 120px; }
+
+/* ===== Diagonal line ===== */
+/* .diagonal-line {
+  position: absolute;
+  width: 400px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  bottom: 0;
+  right: -80px;
+  transform: rotate(-25deg);
+} */
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .banner-content p {
+    font-size: 18px;
+  }
+
+  .icon {
+    font-size: 26px;
+  }
+}

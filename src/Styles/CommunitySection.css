@@ -1,0 +1,80 @@
+.community-wrapper{
+  padding: 60px 40px;
+  background: #f4f4f4;
+}
+
+.community-card{
+  position: relative;
+  height: 450px;
+  border-radius: 40px;
+  overflow: hidden;
+  background-image: url("../assets/powerlifting.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(2px);
+}
+
+.community-content {
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.community-content h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.community-content p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.community-btn {
+  background: #256b3f;
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.community-btn:hover {
+  background: #1e5532;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .community-card {
+    height: 350px;
+  }
+
+  .community-content h2 {
+    font-size: 28px;
+  }
+
+  .community-content p {
+    font-size: 16px;
+  }
+}
+
+

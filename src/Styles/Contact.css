@@ -1,0 +1,312 @@
+
+/* Text container */
+.paragraph{
+    width: 40%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+
+
+.paragraph h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: clamp(18px, 3vw, 42px);
+    line-height: 1.2;
+    padding-top: 50px;
+}
+
+
+
+.paragraph p{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+    font-size: clamp(12px, 1.5vw, 20px);
+    margin-top: 15px;
+    color: darkolivegreen;
+    line-height: 1.6;
+}
+
+
+
+/* MAP FIT DETAILS WIDTH */
+
+.map{
+
+width:100%;
+
+margin-bottom:30px;
+
+}
+
+
+.map iframe{
+
+width:80%;
+
+height:250px;
+
+border-radius:10px;
+
+display:flex;
+align-items: center;
+justify-content: center;
+
+}
+
+
+
+
+
+.second-box{
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:flex-start;
+
+padding:50px;
+
+flex-wrap:wrap;
+
+gap:40px;
+
+background-color:rgb(237, 255, 225);
+margin-top: 0%;
+
+}
+
+
+
+
+
+.detailss{
+
+width:40%;
+
+min-width:300px;
+
+}
+
+
+
+
+.sectionn{
+
+margin-bottom:30px;
+
+}
+
+
+
+
+.titlee{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+
+
+
+.iconn{
+
+width:30px;
+
+height:30px;
+
+object-fit:contain;
+
+}
+
+
+
+
+.sectionn p{
+
+margin-left:45px;
+
+color:gray;
+
+line-height:1.6;
+
+}
+
+
+
+
+.form{
+
+width:40%;
+
+min-width:300px;
+
+
+
+}
+
+.form label{
+    font-weight: bold;
+}
+
+
+
+
+.form form{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:flex-start;   /* FIX submit center problem */
+
+}
+
+
+
+
+.form input,
+.form textarea{
+
+padding:12px;
+
+margin-top:5px;
+
+margin-bottom:8px;
+
+border-radius:12px;
+
+border:1px solid #ccc;
+
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+font-size:15px;
+
+width:94%;
+
+}
+
+
+
+
+.form input:focus,
+.form textarea:focus{
+
+border-color:green;
+
+outline:none;
+
+}
+
+
+
+
+/* MEDIUM BUTTON LEFT SIDE */
+
+.form button{
+
+padding:10px 20px;
+
+width:auto;
+
+min-width:120px;
+
+font-size:15px;
+
+/* background:rgb(93,255,78); */
+
+
+background:rgb(27,145,27);
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+border-radius:20px;
+
+margin-top:10px;
+
+align-self:flex-start;
+
+}
+
+
+
+
+/* 
+.form button:hover{
+
+background:rgb(27,145,27);
+
+} */
+
+
+
+
+@media(max-width:768px){
+
+.second-box{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.detailss,
+.form{
+
+width:90%;
+
+}
+
+}
+
+
+
+
+.errorname,
+.erroremail,
+.errorphone,
+.errormessage{
+
+color:red;
+
+font-size:14px;
+
+margin-bottom:10px;
+
+}
+*{
+    padding: 0px;
+    margin: 0px;
+
+}
+.imageview{
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: -4px;
+
+}
+img{
+    width: 100%;
+}
+.btnn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.form label{
+    margin-left: 10px;
+}
+
+
+

@@ -1,0 +1,92 @@
+.service-details {
+  background-color: #f3f3f3;
+  padding: 80px 60px;
+  margin-top: 40px;
+}
+
+.service-container {
+  /* display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px; */
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.right-cards{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.cardSD{
+  background-color: #e9e9ec;
+  padding: 40px;
+  border-radius: 40px;
+  position: relative;
+}
+
+.cardSD:hover{
+  background: #2f8f52;
+  color: white;
+}
+.cardSD:hover .icon-circleSD {
+  background: white;
+  color: #1f6b3a;
+}
+
+.left-card{
+  padding: 50px;
+  flex: 1;
+}
+
+.icon-circleSD{
+  width: 70px;
+  height: 70px;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.cardSD h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cardSD p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  /* color: #333; */
+}
+
+.cardSD h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.cardSD ul {
+  padding-left: 20px;
+}
+
+.cardSD ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+
+@media (max-width: 992px) {
+  /* .services-container {
+    grid-template-columns: 1fr;
+  } */
+
+  .right-cards {
+    flex-direction: column;
+  }
+}

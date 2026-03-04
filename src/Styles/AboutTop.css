@@ -1,0 +1,89 @@
+.about {
+  background: #f4f4f4;
+  text-align: center;
+  padding: 70px 40px;
+}
+
+/* Title */
+.about h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Description */
+.about-text {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  color: #1f7a3f;
+  line-height: 1.8;
+  margin-bottom: 50px;
+}
+
+/* Gallery */
+.about-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+/* Image container */
+.about-img {
+  width: 260px;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 10px;
+  transform: skewX(-8deg);
+}
+
+/* Image */
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: skewX(8deg);
+  transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.about-img:hover img {
+  transform: skewX(8deg) scale(1.08);
+}
+
+/* Button */
+.about-btn {
+  background: #256b3f;
+  color: white;
+  border: none;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+  background: #1e5532;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-gallery {
+    gap: 20px;
+  }
+
+  .about-img {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .about h2 {
+    font-size: 30px;
+  }
+}
