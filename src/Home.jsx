@@ -38,8 +38,8 @@ function FitnessLanding() {
           <FooterAbove/>
           <Footer/>
           {/* <ZumbaDetails/> */}
-          <Payment/>
-          <Membership/>
+          {/* <Payment/>
+          <Membership/> */}
       </div>
 )
 }
