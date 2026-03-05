@@ -1,7 +1,7 @@
 import React from 'react'
 import './Styles/MissionVision.css'
 import Banner from './Banner'
-import CommunitySection from './CommunitySection'
+
 
 function MissionVision() {
     return (
@@ -37,7 +37,6 @@ function MissionVision() {
                     </div>
                 </div>
             </section>
-            <CommunitySection/>
         </>
   )
 }

@@ -4,7 +4,7 @@ import './Styles/WhyChooseUs.css'
 function WhyChooseUs() {
   return (
     <section className="why">
-      <h2>Why Choose Us</h2>
+      <h1>Why Choose Us</h1>
 
       <div className="why-container">
 
