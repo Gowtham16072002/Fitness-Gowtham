@@ -3,6 +3,9 @@ import './Styles/TrainerSection.css'
 import Trainer1 from './assets/Trainer1.avif'
 import Trainer2 from './assets/Trainer2.avif'
 import Trainer3 from './assets/Trainer3.avif'
+import ZumbaTrainer from './assets/ZumbaTrainer.jpg.png'
+import YogaTrainer from './assets/YogaTrainer.avif'
+import YogaMaleTrainer from './assets/YogaMaleTrainer.png'
 
 function TrainerSection() {
     return (
@@ -22,17 +25,17 @@ function TrainerSection() {
                     </div>
 
                     <div className="trainer">
-                        <img src={Trainer2} alt="Trainer 2" />
+                        <img src={YogaMaleTrainer} alt="Trainer 2" />
                         <h3>Michael Lee</h3>
-                        <p>Personal Fitness Trainer</p>
+                        <p>Yoga Trainer</p>
                         <p>NASM Certified</p>
                         <p>8+ Years Experience</p>
                     </div>
 
                     <div className="trainer">
-                        <img src={Trainer3} alt="Trainer 3" />
+                        <img src={ZumbaTrainer} alt="Trainer 3" />
                         <h3>Jennifer</h3>
-                        <p>Weight Loss Expert</p>
+                        <p>Zumaba Trainer</p>
                         <p>NASM Certified</p>
                         <p>8+ Years Experience</p>
                     </div>
