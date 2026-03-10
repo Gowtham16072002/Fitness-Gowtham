@@ -7,22 +7,30 @@
 
 /* Top container */
 .footer-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   padding: 60px 20px;
 }
 
 /* Left */
 .footer-logo {
-  width: 70px;
+  width: 190px;
+  height: 120px;
   margin-bottom: 10px;
 }
 .footer-logoName{
-  width: 60px;
+  width:  200px;
+  height: 100px;
   margin-bottom: 10px;
+}
+.footer-brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* .footer-left{
@@ -44,6 +52,8 @@
 
 .footer-links h4{
     font-size: 22px;
+    color: white;
+  margin-bottom: 10px;
 }
 
 .footer-links ul {
@@ -52,7 +62,9 @@
 }
 
 .footer-links li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: 0.3s;
   cursor: pointer;
   /* color: #555; */
   color: white;
@@ -63,27 +75,46 @@
 }
 
 /* Social */
-
+/* .footer-social{
+  margin-top: 20px;
+} */
+ .footer-social{
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+}
 .footer-social h4{
     font-size: 22px;
+    margin-bottom: 10px;
     color: white;
 }
-.social-icons {
+.social-icons{
   display: flex;
-  gap: 15px;
-  font-size: 18px;
+  justify-content: center;
+  /* font-size: 18px; */
+  gap: 20px;
   margin-top: 10px;
   color: white;
 }
-
 /* Full width copyright bar */
 .footer-bottom {
   width: 100%;
   background: #1f6f3d;
   color: #fff;
   text-align: center;
-  padding: 60px 10px;
-  font-size: 16px;
+  padding: 12px 10px;
+  font-size: 14px;
+}
+.footer-contact h4{
+  font-size: 22px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.footer-contact p{
+  color: white;
+  margin-bottom: 10px;
+  font-size: 15px;
 }
 
 /* Responsive */
@@ -96,4 +127,22 @@
   .social-icons {
     justify-content: center;
   }
+}
+.social-icons i{
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover{
+  color: #1f6f3d;
+  transform: scale(1.2);
+}
+.Nav-route{
+  text-decoration: none;
+  color: white;
+}
+
+.Nav-route:hover{
+  color: #1f6f3d;
 }

@@ -7,53 +7,62 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <footer className="footer">
-      {/* Top footer content */}
-      <div className="footer-container">
-        <div className="footer-left">
-          <img src={logo} alt="VictoryFit Logo" className="footer-logo" />
-          <img src={logoName} alt="VictoryFit LogoName" className="footer-logoName" />
-          <h3>VictoryFit</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Quisque pharetra condimentum.
-          </p>
-        </div>
+  <div className="footer-container">
 
-        <div className="footer-links">
-          <h4>Quick Link</h4>
-          <ul>
-            <Link className="Nav-route" to="/"><li> Home</li></Link>
-            <Link className="Nav-route" to="/about"><li>About</li></Link>
-            <Link className="Nav-route" to="/service"><li>Services</li></Link>
-            <Link className="Nav-route" to="/programs"><li>Programs</li></Link>
-            <Link className="Nav-route" to="/contact"><li>Contact</li></Link>
-          </ul>
-        </div>
+    {/* LEFT SECTION */}
+    <div className="footer-left">
 
-        <div className="footer-social">
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            {/* <span>Facebook</span>
-            <span>Twitter</span>
-            <span>Youtube</span>
-            <span>Instagram</span> */}
-            {/* <a href="#"><i className="fa-brands fa-facebook"></i></a> */}
-            <i className="fa-brands fa-facebook"></i>
-            {/* <a href="#"><i className="fa-brands fa-twitter"></i></a> */}
-            <i className="fa-brands fa-twitter"></i>
-            {/* <a href="#"><i className="fa-brands fa-youtube"></i></a> */}
-            <i className="fa-brands fa-youtube"></i>
-            {/* <a href="#"><i className="fa-brands fa-instagram"></i></a> */}
-            <i className="fa-brands fa-instagram"></i>
-          </div>
+      <div className="footer-brand">
+        <img src={logo} alt="VictoryFit Logo" className="footer-logo" />
+        <img src={logoName} alt="VictoryFit LogoName" className="footer-logoName" />
+      </div>
+
+      <p>
+        VictoryFit is your ultimate fitness destination focused on strength,
+        endurance, and a healthy lifestyle. Our expert trainers and
+        personalized programs help you stay motivated, achieve your goals,
+        and build a stronger version of yourself every day.
+      </p>
+
+    </div>
+
+    {/* MIDDLE SECTION */}
+    <div className="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><Link className="Nav-route" to="/">Home</Link></li>
+        <li><Link className="Nav-route" to="/about">About</Link></li>
+        <li><Link className="Nav-route" to="/service">Services</Link></li>
+        <li><Link className="Nav-route" to="/programs">Programs</Link></li>
+        <li><Link className="Nav-route" to="/contact">Contact</Link></li>
+      </ul>
+    </div>
+
+    {/* RIGHT SECTION */}
+    <div className="footer-contact">
+      <h4>Contact Us</h4>
+
+      <p>📍 Salem, Tamil Nadu, India</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@victoryfit.com</p>
+      <p>🕒 Mon - Sat : 6AM - 10PM</p>
+    </div>
+
+  </div>
+   <div className="footer-social">
+        <h4>Follow Us</h4>
+        <div className="social-icons">
+          <i className="fa-brands fa-facebook"></i>
+          <i className="fa-brands fa-twitter"></i>
+          <i className="fa-brands fa-youtube"></i>
+          <i className="fa-brands fa-instagram"></i>
         </div>
       </div>
 
-      {/* Bottom copyright bar */}
-      <div className="footer-bottom">
-        Copyright © 2026 VyoobamTech. All rights reserved.
-      </div>
-    </footer>
+  <div className="footer-bottom">
+    Copyright © 2026 VyoobamTech. All rights reserved.
+  </div>
+</footer>
   );
 }
 
