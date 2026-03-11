@@ -131,15 +131,25 @@
     justify-content: center;
   }
 }
-.social-icons i{
-  font-size: 22px;
+.social-icons .icons{
+  font-size: 25px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 50%;
 }
 
-.social-icons i:hover{
-  color:rgb(233, 6, 6);
+.social-icons .icons:hover{
+  /* color:rgb(233, 6, 6); */
   transform: scale(1.2);
+}
+.fb:hover{
+  color: blue;
+}
+.yt:hover{
+  color: red;
+}
+.ig:hover{
+  color: rgb(255, 77, 181);
 }
 .Nav-route{
   text-decoration: none;

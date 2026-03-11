@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ropeimage from "./assets/ropeimage.webp";
+import ropeimage from "./assets/ropeimage.png";
 import "./Styles/Contact.css";
 import locationIcon from "./assets/location.png";
 import mailIcon from "./assets/mail.png";
 import phoneIcon from "./assets/telephone.png";
-import whatsapp from "./assets/whatsapp.png";
+// import whatsapp from "./assets/whatsapp.png";
+import { FaWhatsapp } from "react-icons/fa";
 import Hours from "./assets/Hours.png";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
@@ -159,10 +160,8 @@ function Contact() {
     </div>
 
       <div className="imageview">
-        <img src={ropeimage} alt="banner" />
-      </div>
-
-      <div className="paragraph">
+        {/* <img src={ropeimage} alt="banner" /> */}
+        <div className="paragraph">
 
         <h2>Get In Touch</h2>
 
@@ -171,6 +170,9 @@ function Contact() {
         </p>
 
       </div>
+      </div>
+
+      
 
       <div className="second-box">
 
@@ -341,9 +343,12 @@ function Contact() {
       </div>
 
       {/* WHATSAPP BUTTON */}
-      <a href="https://wa.me/919876543210" className="whatsapp-float" target="_blank" rel="noopener noreferrer"><img src={whatsapp} alt=""/>
-      </a>
+      {/* <a href="https://wa.me/919876543210" className="whatsapp-float" target="_blank" rel="noopener noreferrer"><img src={whatsapp} alt=""/> */}
+      {/* </a> */}
+      <div className="whatsapp-float">
 
+            <FaWhatsapp style={{fontSize:"2rem",color:"white"}} />
+      </div>
       <Footer />
     </>
   );

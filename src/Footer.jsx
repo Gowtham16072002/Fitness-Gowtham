@@ -3,6 +3,10 @@ import "./Styles/Footer.css";
 import logo from './assets/LogoIcon.png'
 import logoName from './assets/LogoName.png'
 import { Link } from 'react-router-dom';
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -53,16 +57,20 @@ function Footer() {
         <h4>Follow Us</h4>
         <div className="social-icons">
           <a href="https://www.facebook.com/victoryfit" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-facebook"></i>
+            {/* <i className="fa-brands fa-facebook"></i> */}
+            <FaFacebook className="icons fb" />
           </a>
           <a href="https://twitter.com/victoryfit" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-twitter"></i>
+            {/* <i className="fa-brands fa-twitter"></i> */}
+            <FaXTwitter className="icons x"/>
           </a>
           <a href="https://www.youtube.com/@victoryfit" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-youtube"></i>
+            {/* <i className="fa-brands fa-youtube"></i> */}
+            <FaYoutube className="icons yt"/>
           </a>
           <a href="https://www.instagram.com/victoryfit" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-instagram"></i>
+            {/* <i className="fa-brands fa-instagram"></i> */}
+            <FaInstagram className="icons ig"/>
           </a>
         </div>
     </div>
