@@ -1,6 +1,6 @@
 import './App.css'
 import Footer from './Footer'
-import FooterAbove from './Footerabove'
+import FooterAbove from './FooterAbove'
 import Home from './Home'
 import HomeMidsec from './HomeMidsec'
 import About from './About'

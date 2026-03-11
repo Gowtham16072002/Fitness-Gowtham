@@ -7,7 +7,22 @@ import ZumbaTrainer from './assets/ZumbaTrainer.jpg.png'
 import YogaTrainer from './assets/YogaTrainer.avif'
 import YogaMaleTrainer from './assets/YogaMaleTrainer.png'
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
+// npm install aos
+
+
 function TrainerSection() {
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true
+        });
+      }, []);
+
     return (
         <div>
             <section className="trainers">
@@ -16,7 +31,7 @@ function TrainerSection() {
 
                 <div className="trainer-container">
 
-                    <div className="trainer">
+                    <div className="trainer" data-aos="zoom-in" data-aos-delay="200">
                         <img src={Trainer1} alt="Trainer 1" />
                         <h3>Emilia clarke</h3>
                         <p>Strength & Conditioning Specialist</p>
@@ -24,7 +39,7 @@ function TrainerSection() {
                         <p>8+ Years Experience</p>
                     </div>
 
-                    <div className="trainer">
+                    <div className="trainer" data-aos="zoom-in" data-aos-delay="200">
                         <img src={YogaMaleTrainer} alt="Trainer 2" />
                         <h3>Michael Lee</h3>
                         <p>Yoga Trainer</p>
@@ -32,7 +47,7 @@ function TrainerSection() {
                         <p>8+ Years Experience</p>
                     </div>
 
-                    <div className="trainer">
+                    <div className="trainer" data-aos="zoom-in" data-aos-delay="200">
                         <img src={ZumbaTrainer} alt="Trainer 3" />
                         <h3>Jennifer</h3>
                         <p>Zumaba Trainer</p>
