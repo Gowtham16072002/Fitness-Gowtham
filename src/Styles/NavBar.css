@@ -65,17 +65,28 @@
 
 /* Buttons */
 .btn {
-  padding: 12px 24px;
+  /* padding: 12px 24px;
   border-radius: 25px;
   border: none;
-  font-size: 14px;
+  font-size: 14px; */
+  padding: 14px 30px;
+   border: none;
+   border-radius: 8px;
+   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
 }
 .btn.primary {
-  background:rgb(245, 87, 87);
+  /* background:rgb(245, 87, 87);
   color: #ffffff;
-  font-size: 16px;
+  font-size: 16px; */
+  background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
 }
 
 .btn.primary:hover{
@@ -83,11 +94,22 @@
 }
 
 .btn.secondary {
-  background: #ffffff;
-  border: 2px solid #1f6f3d;
-  color: #1f6f3d;
-  border: none;
-  font-size: 16px;
+  /* background: #ffffff; */
+  /* border: 2px solid #1f6f3d; */
+  /* color: #1f6f3d; */
+  /* border: none;
+  font-size: 16px; */
+  background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
+  
+   
+   
+   
 }
 
 .btn.secondary:hover {

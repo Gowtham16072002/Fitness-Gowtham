@@ -38,15 +38,22 @@
 .ProgramCoverpage .btn{
     /* position: absolute; */
     /* background-color: rgb(40, 163, 29) ; */
-    background-color:rgb(245, 87, 87);
-    top: 60%;
-    left: 10%;
+    /* background-color:rgb(245, 87, 87);
     color: white;
     border-radius: 20px;
     padding: 10px;
     border-style: none;
+    font-weight: bold; */
+    background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
+    left: 10%;
+    top: 60%;
     margin-top: 50px;
-    font-weight: bold;
 }
 .ProgramCoverpage .contextArea p {
     top: 30%;

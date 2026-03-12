@@ -54,14 +54,21 @@
 }
 .select-btn {
   width: 100%;
-  padding: 12px;
-  background: #1e2a78;
+  /* background: #1e2a78;
   color: white;
-  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none; */
+  background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
   margin: 20px 0;
   cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
 }
 .select-btn:hover {
   background: #16205e;

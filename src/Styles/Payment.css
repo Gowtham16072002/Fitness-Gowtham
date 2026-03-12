@@ -67,13 +67,20 @@
 .confirm-btn {
   margin-top: 30px;
   width: 100%;
-  padding: 15px;
+  /* padding: 15px;
   background: #1f6b3a;
   color: white;
   border: none;
   border-radius: 30px;
+  font-size: 16px; */
+  background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
   cursor: pointer;
-  font-size: 16px;
 } 
 .change-payment-method{
   font-size: 14px;

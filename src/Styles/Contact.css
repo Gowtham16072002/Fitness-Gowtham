@@ -124,17 +124,24 @@ outline:none;
 }
 
 .form button{
-padding:10px 20px;
-width:auto;
-min-width:120px;
-font-size:15px;
-/* background:rgb(27,145,27); */
+/* padding:10px 20px;
 background-color:rgb(245, 87, 87);
 color:white;
-border:none;
+margin-top:10px; */
+background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
+width:auto;
+min-width:120px;
+/* border-radius:20px; */
+/* border:none; */
+font-size:15px;
+/* background:rgb(27,145,27); */
 cursor:pointer;
-border-radius:20px;
-margin-top:10px;
 align-self:flex-start;
 }
 

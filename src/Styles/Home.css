@@ -21,12 +21,19 @@
 
  .hero-btn {
    /* background: var(--accent-lime); */
-   background: rgb(245, 87, 87);
+   /* background: rgb(245, 87, 87);
    color: #ffffff;
    padding: 14px 30px;
    border: none;
    border-radius: 8px;
-   font-weight: 600;
+   font-weight: 600; */
+   background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
    margin-top: 24px;
    margin: 10px;
    margin-top: 40px;

@@ -44,14 +44,21 @@
   line-height: 1.6;
 }
 .community-btn {
-  background:rgb(245, 87, 87);
+  /* background:rgb(245, 87, 87);
   color: #ffffff;
   border: none;
   padding: 14px 32px;
-  margin: 10px;
   font-size: 15px;
   font-weight: bold;
-  border-radius: 30px;
+  border-radius: 30px; */
+  background: rgb(245, 87, 87);
+    color: #ffffff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+
+  margin: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }

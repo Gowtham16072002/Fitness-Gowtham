@@ -26,13 +26,15 @@
 }
 
 .cardSD:hover {
-  background: #2f8f52;
+  /* background: #2f8f52; */
+  background:rgb(245, 87, 87);
   color: white;
 }
 
 .cardSD:hover .icon-circleSD {
   background: white;
-  color: #1f6b3a;
+  /* color: #1f6b3a; */
+  color:black;
 }
 
 .left-card {
@@ -43,7 +45,8 @@
 .icon-circleSD {
   width: 70px;
   height: 70px;
-  background-color: green;
+  /* background-color: green; */
+  background-color:rgb(245, 87, 87);
   color: white;
   border-radius: 50%;
   display: flex;
