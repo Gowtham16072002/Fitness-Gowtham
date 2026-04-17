@@ -1,0 +1,353 @@
+.paragraph {
+  width: 40%;
+  margin-left: 50px;
+}
+
+.paragraph h2 {
+  font-size: clamp(18px, 3vw, 42px);
+  line-height: 1.2;
+  color: white;
+}
+
+.paragraph p {
+  font-size: clamp(12px, 1.5vw, 20px);
+  margin-top: 15px;
+  color: #ffffffcc;
+  line-height: 1.6;
+}
+
+.map {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.map iframe {
+  width: 120%;
+  height: 250px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 40px;
+  background-color: rgba(245, 87, 87, 0.2);
+  margin-top: 0%;
+}
+
+.detailss {
+  width: 40%;
+  min-width: 300px;
+}
+
+.sectionn {
+  margin-bottom: 30px;
+}
+
+.titlee {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.iconn {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.sectionn p {
+  margin-left: 45px;
+  color: gray;
+  line-height: 1.6;
+}
+
+.response-badge {
+  background: rgba(233, 6, 6, 0.2);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.form {
+  width: 40%;
+  min-width: 300px;
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form input,
+.form textarea {
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 94%;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: green;
+  outline: none;
+}
+
+.form button {
+  background: rgb(245, 87, 87);
+  color: #ffffff;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+
+  width: auto;
+  min-width: 120px;
+  font-size: 15px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .paragraph {
+    position: relative;
+    width: 90%;
+    top: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  .second-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map iframe {
+    width: 100%;
+    height: 320px;
+    border-radius: 12px;
+  }
+
+  .map {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .detailss,
+  .form {
+    width: 90%;
+  }
+}
+
+.errorname,
+.erroremail,
+.errorphone,
+.errormessage {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.imageview {
+  width: 100%;
+  height: 80vh;
+  margin-top: 0px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+    url("../assets/ropeimage.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.form label {
+  margin-left: 10px;
+}
+
+.errorconsultation {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.consultation-text {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2b9a33;
+  box-shadow: 0 6px 15px rgba(12, 12, 12, 0.753);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp-float img {
+  width: 32px;
+  height: 32px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.sticky-cta {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+.sticky-cta a {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 30px;
+  background: #1b5e20;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.sticky-cta a:hover {
+  background: #388e3c;
+}
+
+.offer-banner {
+  background: linear-gradient(90deg,
+      rgba(2, 2, 2, 1),
+      rgba(2, 2, 2, 0.5),
+      rgb(2, 2, 2, 1));
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+
+.offer-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollText 12s linear infinite;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.loader {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .imageview {
+    min-height: 60vh;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+    background-position: center;
+  }
+
+  .paragraph {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .second-box {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .detailss,
+  .form {
+    width: 100%;
+  }
+
+  .map iframe {
+    height: 300px;
+  }
+
+  .form button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .paragraph h2 {
+    font-size: 24px;
+  }
+
+  .paragraph p {
+    font-size: 15px;
+  }
+
+  .map iframe {
+    height: 250px;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+  }
+}

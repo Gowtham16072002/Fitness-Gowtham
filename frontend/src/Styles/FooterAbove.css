@@ -1,0 +1,168 @@
+.cta {
+  position: relative;
+  min-height: 80vh;
+  background: linear-gradient(180deg,
+      rgba(233, 6, 6, 0.5),
+      white,
+      white,
+      white,
+      rgba(233, 6, 6, 0.5));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+.cta-content {
+  max-width: 700px;
+  z-index: 2;
+}
+
+.cta-content h1 {
+  font-size: 44px;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.cta-content h4 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.cta-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  background-color: rgb(245, 87, 87);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 14px 30px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+.cta-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta-btn:hover {
+  background: rgb(233, 6, 6);
+  transform: scale(1.05);
+}
+
+.icon {
+  position: absolute;
+  font-size: 38px;
+  color: #1f6b3a;
+  opacity: 0.9;
+  animation: float 3s ease-in-out infinite;
+}
+
+.icon1 {
+  top: 15%;
+  left: 25%;
+  animation-delay: 0s;
+}
+
+.icon2 {
+  top: 40%;
+  left: 15%;
+  animation-delay: 0.5s;
+}
+
+.icon3 {
+  bottom: 20%;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.icon4 {
+  top: 15%;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+.icon5 {
+  top: 45%;
+  right: 25%;
+  animation-delay: 2s;
+}
+
+.icon6 {
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 2.5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-content h1 {
+    font-size: 32px;
+  }
+
+  .cta-content h4 {
+    font-size: 20px;
+  }
+
+  .cta-content p {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    padding: 50px 15px;
+  }
+
+  .cta-content h1 {
+    font-size: 26px;
+  }
+
+  .cta-content h4 {
+    font-size: 18px;
+  }
+
+  .cta-content p {
+    font-size: 13px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .icon {
+    display: none;
+  }
+}

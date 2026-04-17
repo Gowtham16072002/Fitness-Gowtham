@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.BhaktiyogaPage {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url("../assets/BeginnerYogaBackground.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+.BhaktiyogaTopContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.BhaktiyogaTopContainer h1 {
+    text-align: center;
+    color: rgb(245, 87, 87);
+
+}
+
+.BhaktiyogaContent {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 20px;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+.BhaktiyogaContent p {
+    color: white;
+    line-height: 1.5;
+    gap: 2px;
+
+}
+
+.BhaktiyogaContent p span {
+    margin-bottom: 20px;
+}
+
+.BhaktiyogaImage {
+    width: 50%;
+    display: flex;
+    margin: 40px;
+
+}
+
+.BhaktiyogaImages {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    flex: 1;
+
+}
+
+.BhaktiyogaImages .image-container {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    animation: fade 0.8s ease-in-out;
+
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.2
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.Bhaktiyogasubscribe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.subcribearta,
+.subcribeartharthi,
+.subcribejijnasu,
+.subcribejnani {
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    color: beige;
+}
+
+.subcribearta ul,
+.subcribeartharthi ul,
+.subcribejijnasu ul,
+.subcribejnani ul {
+    margin-top: 15px;
+    padding-left: 10px;
+
+}
+
+.subcribearta li,
+.subcribeartharthi li,
+.subcribejijnasu li,
+.subcribejnani li {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+
+.subcribeartalist li::before,
+.subcribeartharthilist li::before,
+.subcribejijnasulist li::before,
+.subcribejnanilist li::before {
+    content: "◆";
+    color: rgba(255, 47, 47, 0.8);
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+}
+
+.BhaktiyogaContent h2 {
+    color: white;
+    padding-bottom: 10px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 15px;
+    border-style: none;
+    margin: 50px;
+    padding: 14px 30px;
+    font-size: 15px;
+    background-color: rgb(245, 87, 87);
+    color: white;
+}
+
+.Bhaktiyoga-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Bhaktiyogasubscribefirst,
+.Bhaktiyogasubscribesecond {
+    display: flex;
+    padding: 50px;
+    min-height: 230px;
+    flex-direction: column;
+    gap: 30px;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.Bhaktiyogasubscribefirst h2,
+.Bhaktiyogasubscribesecond h2 {
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.subcribearta {
+    background: linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/artadetail.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.subcribeartharthi {
+    background: linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/artharthidetail.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.subcribejijnasu {
+    background: linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/jijnasudetail.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.subcribejnani {
+    background: linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/jnanidetail.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}

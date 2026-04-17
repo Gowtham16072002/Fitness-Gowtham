@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.IndividualSportsPage {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)),
+    url("../assets/BeginnerBackground.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.TopContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.TopContainer h1 {
+  text-align: center;
+  color: rgb(245, 87, 87);
+}
+
+.IndividualSportsContent {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.IndividualSportsContent p {
+  color: white;
+  line-height: 1.5;
+}
+
+.IndividualSportsImage {
+  width: 50%;
+  display: flex;
+  margin: 40px;
+}
+
+.IndividualSportsImages {
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+
+.IndividualSportsImages .image-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: fade 0.8s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.subscribe {
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.subcribeBAD,
+.subcribeTEN,
+.subcribeBOX,
+.subcribeATH {
+  width: 600px;
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  color: beige;
+}
+
+.subcribeBAD ul,
+.subcribeTEN ul,
+.subcribeBOX ul,
+.subcribeATH ul {
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.BADlist li,
+.TENlist li,
+.BOXlist li,
+.ATHlist li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.BADlist li::before,
+.TENlist li::before,
+.BOXlist li::before,
+.ATHlist li::before {
+  content: "◆";
+  color: rgba(255, 47, 47, 1);
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+}
+
+.IndividualSportsContent h2 {
+  color: white;
+  padding-bottom: 10px;
+}
+
+.INSPTbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 15px;
+  border-style: none;
+  margin: 50px;
+  padding: 14px 30px;
+  font-size: 15px;
+  background-color: rgb(245, 87, 87);
+  color: white;
+}
+
+.IndividualSports-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribefirst,
+.subscribesecond {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribefirst h2,
+.subscribesecond h2 {
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.subcribeBAD {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/Badminton.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribeTEN {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/individual1.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribeBOX {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/BoxingSport.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribeATH {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/individual2.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}

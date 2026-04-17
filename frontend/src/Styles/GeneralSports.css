@@ -1,0 +1,57 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+.GeneralSports {
+  width: 100%;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
+    url("../assets/TeamSports.png");
+  height: 100vh;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.GeneralSports div {
+  width: 20%;
+  height: 50%;
+  position: relative;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.GeneralSports .picture {
+  width: 100%;
+  height: 100%;
+}
+
+.GeneralSports .picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  border-radius: 10px;
+}
+
+.GeneralSports .title {
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  top: 85%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+}
+
+.GeneralSports div:hover {
+  transform: scale(1.06);
+}
+
+.GeneralSports .picture img:hover {
+  opacity: 0.9;
+}

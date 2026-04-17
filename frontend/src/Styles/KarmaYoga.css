@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.karmayogaPage {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)),
+    url("../assets/BeginnerYogaBackground.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.karmayogaTopContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.karmayogaTopContainer h1 {
+  text-align: center;
+  color: rgb(245, 87, 87);
+}
+
+.karmayogaContent {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 20px;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.karmayogaContent p {
+  color: white;
+  line-height: 1.5;
+  gap: 2px;
+}
+
+.karmayogaContent p span {
+  margin-bottom: 20px;
+}
+
+.karmayogaImage {
+  width: 50%;
+  display: flex;
+  margin: 40px;
+}
+
+.karmayogaImages {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+
+.karmayogaImages .image-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: fade 0.8s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.karmayogasubscribe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.subcribenityakarma,
+.subcribenaimittikakarma,
+.subcribekamyakarma,
+.subcribenishkamakarma {
+  width: 600px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  color: beige;
+}
+
+.subcribenityakarma ul,
+.subcribenaimittikakarma ul,
+.subcribekamyakarma ul,
+.subcribenishkamakarma ul {
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.subcribenityakarma li,
+.subcribenaimittikakarma li,
+.subcribekamyakarma li,
+.subcribenishkamakarma li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.subcribenityakarmalist li::before,
+.subcribenaimittikakarmalist li::before,
+.subcribekamyakarmalist li::before,
+.subcribenishkamakarmalist li::before {
+  content: "◆";
+  color: rgba(255, 47, 47, 0.8);
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+}
+
+.karmayogaContent h2 {
+  color: white;
+  padding-bottom: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 15px;
+  border-style: none;
+  margin: 50px;
+  padding: 14px 30px;
+  font-size: 15px;
+  background-color: rgb(245, 87, 87);
+  color: white;
+}
+
+.karmayoga-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.karmayogasubscribefirst,
+.karmayogasubscribesecond {
+  display: flex;
+  padding: 50px;
+  min-height: 230px;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.karmayogasubscribefirst h2,
+.karmayogasubscribesecond h2 {
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.subcribenityakarma {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/nityakarmadetail.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribenaimittikakarma {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)),
+    url("../assets/naimittikakarmadetail.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribekamyakarma {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)), url("../assets/kamyakarmadetail.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.subcribenishkamakarma {
+  background:
+    linear-gradient(rgb(43, 41, 41, 0.8)),
+    url("../assets/nishkamakarmadetail.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}

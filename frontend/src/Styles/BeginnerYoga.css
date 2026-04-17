@@ -1,0 +1,57 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+.BeginnerYoga {
+  width: 100%;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 1.4), rgba(0, 0, 0, 0.5)),
+    url("../assets/BeginnerYogaBackground.jpeg");
+  height: 100vh;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.BeginnerYoga div {
+  width: 20%;
+  height: 50%;
+  position: relative;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.BeginnerYoga .picture {
+  width: 100%;
+  height: 100%;
+}
+
+.BeginnerYoga .picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  border-radius: 10px;
+}
+
+.BeginnerYoga .title {
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  top: 85%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+}
+
+.BeginnerYoga div:hover {
+  transform: scale(1.06);
+}
+
+.BeginnerYoga .picture img:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,96 @@
+.transformation {
+  padding: 80px 10%;
+  background: #f8f8f8;
+  text-align: center;
+}
+.transformation h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.top-para {
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.transform-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.transform-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.transform-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain; 
+  border-radius: 10px;
+  background: #f3f3f3;
+  margin-bottom: 8px;
+}
+
+.transform-card .before {
+  color: #e63946;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.transform-card .after {
+  color: #2a9d8f;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+
+.transform-card h4 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.transform-card p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.swiper {
+  padding-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+  .transform-card img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transformation {
+    padding: 60px 20px;
+  }
+
+  .transformation h2 {
+    font-size: 28px;
+  }
+
+  .top-para {
+    font-size: 15px;
+  }
+
+  .transform-card img {
+    height: 200px;
+  }
+}

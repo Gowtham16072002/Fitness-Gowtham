@@ -1,0 +1,161 @@
+.admin-sidebar {
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0f0f14, #181824);
+  color: white;
+  padding: 28px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-logo {
+  margin-bottom: 35px;
+}
+
+.admin-logo h2 {
+  color: white;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.admin-logo p {
+  font-size: 14px;
+  color: #d6d6d6;
+  font-weight: 500;
+}
+
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-link {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 15px 18px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background: linear-gradient(90deg, #ef4444, #fb7185);
+}
+
+.admin-user-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.admin-user-image img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.admin-user-info h4 {
+  font-size: 19px;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.admin-user-info p {
+  font-size: 14px;
+  color: #dddddd;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .admin-sidebar {
+    width: 220px;
+    padding: 24px 16px;
+  }
+
+  .admin-logo h2 {
+    font-size: 28px;
+  }
+
+  .sidebar-link {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px 16px;
+    overflow: visible;
+  }
+
+  .admin-logo {
+    margin-bottom: 24px;
+  }
+
+  .admin-logo h2 {
+    font-size: 26px;
+  }
+
+  .admin-logo p {
+    font-size: 13px;
+  }
+
+  .sidebar-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .sidebar-menu li {
+    margin-bottom: 0;
+  }
+
+  .sidebar-link {
+    text-align: center;
+    font-size: 15px;
+    padding: 12px 10px;
+  }
+
+  .admin-user-box {
+    margin-top: 22px;
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-logo h2 {
+    font-size: 24px;
+  }
+
+  .admin-user-info h4 {
+    font-size: 17px;
+  }
+
+  .admin-user-info p {
+    font-size: 13px;
+  }
+}

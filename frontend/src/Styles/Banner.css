@@ -1,0 +1,62 @@
+.fitness-banner {
+  position: relative;
+  background-color: rgb(38, 37, 37);
+  padding: 100px 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.banner-content {
+  max-width: 850px;
+  margin: auto;
+  z-index: 2;
+  position: relative;
+}
+
+.banner-content p {
+  color: #ffffff;
+  font-size: 26px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.icon {
+  position: absolute;
+  font-size: 40px;
+  color: rgb(245, 87, 87);
+}
+
+.icon1 {
+  top: 20px;
+  left: 40px;
+}
+
+.icon2 {
+  top: 80px;
+  left: 220px;
+}
+
+.icon3 {
+  bottom: 40px;
+  left: 120px;
+}
+
+.icon4 {
+  top: 40px;
+  right: 220px;
+}
+
+.icon5 {
+  bottom: 60px;
+  right: 120px;
+}
+
+@media (max-width: 768px) {
+  .banner-content p {
+    font-size: 18px;
+  }
+
+  .icon {
+    font-size: 26px;
+  }
+}
