@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Styles/Auth.css";
+import { API_BASE_URL } from "../config";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ function SignUp() {
     setErrors((prev) => ({
       ...prev,
       [name]: error,
-    }));0
+    }));
 
     return error;
   };
@@ -118,7 +119,7 @@ function SignUp() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3000/auth/signup", {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

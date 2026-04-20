@@ -64,7 +64,7 @@ function NavBar() {
         {!user && (
           <li className="mobile-auth-item">
             <Link to="/login" className="auth-link">
-              loging
+              Login
             </Link>
           </li>
         )}

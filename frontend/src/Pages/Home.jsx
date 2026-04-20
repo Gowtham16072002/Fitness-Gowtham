@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../Styles/Home.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import HomeMidsec from "./HomeMidsec";
 import FooterAbove from "./FooterAbove";
 import WhyChooseUs from "./WhyChooseUs";
@@ -8,20 +8,23 @@ import Program2 from "./Program2";
 import TrainerSection from "./TrainerSection";
 import Testimonials from "./Testimonials";
 import { AuthContext } from "../Context/AuthContext";
+import { API_BASE_URL } from "../config";
 
 function FitnessLanding() {
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [homeData, setHomeData] = useState(null);
   const [loading, setLoading] = useState(true);
-   !user && navigate("/login")
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
   useEffect(() => {
     fetchHomeContent();
   }, []);
 
   const fetchHomeContent = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/home-content");
+      const response = await fetch(`${API_BASE_URL}/api/home-content`);
       const result = await response.json();
 
       if (result.success) {

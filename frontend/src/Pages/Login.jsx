@@ -4,6 +4,7 @@ import "../Styles/Auth.css";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ function Login() {
     else
       navigate(`/${user.role}/home`)
   }
+
   useEffect(() => {
     console.log(user)
   }, [user])
@@ -82,9 +84,8 @@ function Login() {
     try {
       setLoading(true);
 
-      const data = await axios.post("http://localhost:3000/auth/login", { emailAddress: formData.emailAddress, passWord: formData.passWord }, { withCredentials: true })
+      const data = await axios.post(`${API_BASE_URL}/auth/login`, { emailAddress: formData.emailAddress, passWord: formData.passWord }, { withCredentials: true })
       console.log(data);
-      localStorage.setItem("token",data.data.token)
       if (data.data.success) {
         alert(data.data.message || "Login successful");
         if (data.data.user.role === "admin") {
