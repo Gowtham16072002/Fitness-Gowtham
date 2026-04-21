@@ -39,12 +39,11 @@ const uploadImage = async (req, res) => {
       public_id: result.public_id,
     });
   } catch (error) {
-    console.error("Cloudinary Upload Error:", error);
+    console.error("Cloudinary upload failed:", error);
 
     return res.status(500).json({
       success: false,
-      message: "Image upload failed",
-      error: error.message,
+      message: error?.message || "Image upload failed",
     });
   }
 };

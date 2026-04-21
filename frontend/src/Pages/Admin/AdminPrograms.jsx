@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import AdminSidebar from "../../Components/AdminSidebar";
 import "../../Styles/AdminPrograms.css";
+import { API_BASE_URL } from "../../config";
+import { AuthContext } from "../../Context/AuthContext";
 
 function AdminPrograms() {
+  const { csrfToken } = useContext(AuthContext);
+
   const [openSection, setOpenSection] = useState("hero");
+  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [heroData, setHeroData] = useState({
     title: "Our Fitness Programs",
@@ -73,26 +79,59 @@ function AdminPrograms() {
     button1: "Join Now",
     button2: "View Pricing",
   });
+
   useEffect(() => {
-    fetch("http://localhost:3000/api/programs", {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setHeroData(data.heroData || {});
-        setCategoryData(data.categoryData || []);
-        setProgramList(data.programList || []);
-        setCtaData(data.ctaData || {});
-      });
+    const fetchPrograms = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/programs`, {
+          withCredentials: true,
+        });
+
+        const data = response?.data || {};
+
+        if (data.heroData) {
+          setHeroData({
+            title: data.heroData.title || "",
+            subtitle: data.heroData.subtitle || "",
+          });
+        }
+
+        if (Array.isArray(data.categoryData) && data.categoryData.length > 0) {
+          setCategoryData(data.categoryData);
+        }
+
+        if (Array.isArray(data.programList) && data.programList.length > 0) {
+          setProgramList(data.programList);
+        }
+
+        if (data.ctaData) {
+          setCtaData({
+            title: data.ctaData.title || "",
+            description: data.ctaData.description || "",
+            button1: data.ctaData.button1 || "",
+            button2: data.ctaData.button2 || "",
+          });
+        }
+      } catch (error) {
+        alert(error?.response?.data?.message || "Failed to load programs data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPrograms();
   }, []);
 
   const toggleSection = (section) => {
-    setOpenSection(openSection === section ? "" : section);
+    setOpenSection((prev) => (prev === section ? "" : section));
   };
 
   const handleHeroChange = (e) => {
     const { name, value } = e.target;
-    setHeroData({ ...heroData, [name]: value });
+    setHeroData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleCategoryChange = (index, field, value) => {
@@ -109,7 +148,10 @@ function AdminPrograms() {
 
   const handleCtaChange = (e) => {
     const { name, value } = e.target;
-    setCtaData({ ...ctaData, [name]: value });
+    setCtaData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const addProgram = () => {
@@ -120,7 +162,8 @@ function AdminPrograms() {
       duration: "",
       price: "",
     };
-    setProgramList([...programList, newProgram]);
+
+    setProgramList((prev) => [...prev, newProgram]);
   };
 
   const removeProgram = (id) => {
@@ -128,39 +171,102 @@ function AdminPrograms() {
     setProgramList(updated);
   };
 
-  const handleSubmit = () => {
-    const allData = {
-      heroData,
-      categoryData,
-      programList,
-      ctaData,
-    };
+  const validateBeforeSubmit = () => {
+    if (!heroData.title.trim() || !heroData.subtitle.trim()) {
+      alert("Please fill the hero section completely.");
+      return false;
+    }
 
-    const handleSubmit = async () => {
-      const allData = {
-        heroData,
-        categoryData,
-        programList,
-        ctaData,
-      };
+    const hasEmptyCategory = categoryData.some(
+      (item) => !item.title?.trim() || !item.description?.trim()
+    );
 
-      try {
-        await fetch("http://localhost:3000/api/programs", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify(allData),
-        });
+    if (hasEmptyCategory) {
+      alert("Please fill all category fields.");
+      return false;
+    }
 
-        alert("Programs updated successfully!");
-      } catch (error) {
-        console.log(error);
-        alert("Error saving data");
-      }
-    };
+    const hasEmptyProgram = programList.some(
+      (item) =>
+        !item.name?.trim() ||
+        !item.category?.trim() ||
+        !item.duration?.trim() ||
+        !item.price?.trim()
+    );
+
+    if (hasEmptyProgram) {
+      alert("Please fill all program fields before saving.");
+      return false;
+    }
+
+    const hasInvalidPrice = programList.some((item) =>
+      isNaN(Number(item.price))
+    );
+
+    if (hasInvalidPrice) {
+      alert("Program price must be a valid number.");
+      return false;
+    }
+
+    if (
+      !ctaData.title.trim() ||
+      !ctaData.description.trim() ||
+      !ctaData.button1.trim() ||
+      !ctaData.button2.trim()
+    ) {
+      alert("Please fill the CTA section completely.");
+      return false;
+    }
+
+    return true;
   };
+
+  const handleSubmit = async () => {
+    try {
+      setSaving(true);
+
+      // 🔥 ALWAYS GET FRESH CSRF TOKEN
+      const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
+        withCredentials: true,
+      });
+
+      const freshToken = csrfRes.data.csrfToken;
+
+      const response = await axios.put(
+        `${API_BASE_URL}/api/home-content`,
+        {
+          hero: formData.hero,
+          stats: formData.stats,
+          whyChooseUs: formData.whyChooseUs,
+          cta: formData.cta,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "x-csrf-token": freshToken, // 🔥 use fresh token
+          },
+        }
+      );
+
+      alert("Updated successfully!");
+    } catch (error) {
+      alert(error?.response?.data?.message || "Error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="admin-page">
+        <AdminSidebar />
+        <main className="admin-content">
+          <h1>Edit Programs Page</h1>
+          <p>Loading program data...</p>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="admin-page">
@@ -208,11 +314,11 @@ function AdminPrograms() {
           {openSection === "categories" && (
             <div className="section-body">
               {categoryData.map((item, index) => (
-                <div className="admin-box" key={item.id}>
+                <div className="admin-box" key={item.id || index}>
                   <label>Category Title</label>
                   <input
                     type="text"
-                    value={item.title}
+                    value={item.title || ""}
                     onChange={(e) =>
                       handleCategoryChange(index, "title", e.target.value)
                     }
@@ -221,7 +327,7 @@ function AdminPrograms() {
                   <label>Category Description</label>
                   <textarea
                     rows="3"
-                    value={item.description}
+                    value={item.description || ""}
                     onChange={(e) =>
                       handleCategoryChange(index, "description", e.target.value)
                     }
@@ -244,11 +350,11 @@ function AdminPrograms() {
           {openSection === "programs" && (
             <div className="section-body">
               {programList.map((item, index) => (
-                <div className="admin-box" key={item.id}>
+                <div className="admin-box" key={item.id || index}>
                   <label>Program Name</label>
                   <input
                     type="text"
-                    value={item.name}
+                    value={item.name || ""}
                     onChange={(e) =>
                       handleProgramChange(index, "name", e.target.value)
                     }
@@ -257,7 +363,7 @@ function AdminPrograms() {
                   <label>Category</label>
                   <input
                     type="text"
-                    value={item.category}
+                    value={item.category || ""}
                     onChange={(e) =>
                       handleProgramChange(index, "category", e.target.value)
                     }
@@ -268,7 +374,7 @@ function AdminPrograms() {
                       <label>Duration</label>
                       <input
                         type="text"
-                        value={item.duration}
+                        value={item.duration || ""}
                         onChange={(e) =>
                           handleProgramChange(index, "duration", e.target.value)
                         }
@@ -279,7 +385,7 @@ function AdminPrograms() {
                       <label>Price</label>
                       <input
                         type="text"
-                        value={item.price}
+                        value={item.price || ""}
                         onChange={(e) =>
                           handleProgramChange(index, "price", e.target.value)
                         }
@@ -288,6 +394,7 @@ function AdminPrograms() {
                   </div>
 
                   <button
+                    type="button"
                     className="remove-btn"
                     onClick={() => removeProgram(item.id)}
                   >
@@ -296,7 +403,7 @@ function AdminPrograms() {
                 </div>
               ))}
 
-              <button className="add-btn" onClick={addProgram}>
+              <button type="button" className="add-btn" onClick={addProgram}>
                 + Add Program
               </button>
             </div>
@@ -347,8 +454,17 @@ function AdminPrograms() {
         </div>
 
         <div className="update-btn-wrap">
-          <button className="update-btn" onClick={handleSubmit}>
-            Update Programs Page
+          <button
+            type="button"
+            className="update-btn"
+            onClick={handleSubmit}
+            disabled={saving || !csrfToken}
+          >
+            {saving
+              ? "Saving..."
+              : !csrfToken
+                ? "Preparing security token..."
+                : "Update Programs Page"}
           </button>
         </div>
       </main>

@@ -1,8 +1,8 @@
 const express = require("express");
 const multer = require("multer");
 const { uploadImage } = require("../Controllers/uploadController");
-
 const { protect, adminOnly } = require("../middleware/authMiddleware");
+const { doubleCsrfProtection } = require("../utils/csrf");
 
 const router = express.Router();
 
@@ -31,7 +31,38 @@ const upload = multer({
   },
 });
 
+router.post(
+  "/",
+  protect,
+  adminOnly,
+  doubleCsrfProtection,
+  (req, res, next) => {
+    upload.single("image")(req, res, (err) => {
+      if (err instanceof multer.MulterError) {
+        if (err.code === "LIMIT_FILE_SIZE") {
+          return res.status(400).json({
+            success: false,
+            message: "Image size must be less than 5MB",
+          });
+        }
 
-router.post("/", protect, adminOnly, upload.single("image"), uploadImage);
+        return res.status(400).json({
+          success: false,
+          message: err.message || "File upload error",
+        });
+      }
+
+      if (err) {
+        return res.status(400).json({
+          success: false,
+          message: err.message || "Invalid file upload",
+        });
+      }
+
+      next();
+    });
+  },
+  uploadImage
+);
 
 module.exports = router;

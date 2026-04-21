@@ -4,7 +4,7 @@ const userModel = require("../models/userModel");
 const protect = async (req, res, next) => {
   try {
     const token = req.cookies.token
-    console.log(token);
+    // console.log(token);
     
     // if (
     //   req.headers.authorization &&

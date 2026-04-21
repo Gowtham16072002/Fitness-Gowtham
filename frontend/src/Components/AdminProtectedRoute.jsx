@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+
 function AdminProtectedRoute() {
-  const {user} = useContext(AuthContext);
-  
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!user) {
     return <Navigate to="/login" replace />;
   }

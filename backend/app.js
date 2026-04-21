@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const enforceHTTPS = require("./middleware/httpsMiddleware");
 
 const authRoutes = require("./Routes/authRoute.js");
 const homeContentRoutes = require("./Routes/homeContentRoute.js");
@@ -9,12 +10,16 @@ const programRoutes = require("./Routes/programRoutes.js");
 
 const app = express();
 
+// Enforce HTTPS only in production
+app.use(enforceHTTPS);
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -28,10 +33,20 @@ app.get("/", (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error("Server Error:", err);
-  res.status(500).json({
+  if (err && err.code === "EBADCSRFTOKEN") {
+    return res.status(403).json({
+      success: false,
+      message: "Invalid CSRF token",
+    });
+  }
+
+  if (process.env.NODE_ENV !== "production") {
+    console.error("Server Error:", err.message);
+  }
+
+  return res.status(500).json({
     success: false,
-    message: err.message || "Internal server error",
+    message: "Internal server error",
   });
 });
 

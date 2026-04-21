@@ -3,12 +3,12 @@ import "./Styles/Payment.css";
 
 function Payment() {
   const [method, setMethod] = useState("card");
+  const [cardHolderName, setCardHolderName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");
   const [upi, setUpi] = useState("");
   const [error, setError] = useState("");
   const [expiry, setExpiry] = useState("");
-
 
   const handleCardNumber = (e) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -24,7 +24,7 @@ function Payment() {
   };
 
   const validateUpi = (upiId) => {
-    const upiRegex = /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/;
+    const upiRegex = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z]{2,}$/;
     return upiRegex.test(upiId);
   };
 
@@ -56,42 +56,63 @@ function Payment() {
     setExpiry(value);
   };
 
+  const switchMethod = (nextMethod) => {
+    setMethod(nextMethod);
+    setError("");
+  };
+
   const handleConfirm = () => {
     setError("");
-    if (method == "card") {
+
+    if (method === "card") {
+      if (!cardHolderName.trim()) {
+        setError("Card holder name is required");
+        return;
+      }
+
       if (cardNumber.length !== 19) {
         setError("Invalid card number");
         return;
       }
+
       if (!validateExpiry(expiry)) {
         setError("Card is expired or invalid expiry date");
         return;
       }
+
       if (cvv.length !== 3) {
         setError("CVV must be 3 digits");
         return;
       }
     }
-    if (method == "upi") {
-      if (!validateUpi(upi)) {
+
+    if (method === "upi") {
+      if (!validateUpi(upi.trim())) {
         setError("Invalid UPI ID");
         return;
       }
     }
+
     alert("Payment Successful");
   };
 
   return (
     <div className="payment-container">
       <h2>Payment</h2>
-      <div className="payment-methods">
-      </div>
-      {method == "card" && (
+
+      <div className="payment-methods"></div>
+
+      {method === "card" && (
         <div className="form">
           <h5>Payment method : Card</h5>
 
           <label>Card holder name</label>
-          <input type="text" placeholder="eg. Enter your name" />
+          <input
+            type="text"
+            value={cardHolderName}
+            onChange={(e) => setCardHolderName(e.target.value)}
+            placeholder="eg. Enter your name"
+          />
 
           <label>Card number</label>
           <input
@@ -115,28 +136,24 @@ function Payment() {
             <div>
               <label>CVV</label>
               <input
-                type="text"
+                type="password"
                 value={cvv}
                 onChange={handleCvv}
                 placeholder="eg. 123"
               />
             </div>
           </div>
+
           {error && <p style={{ color: "red" }}>{error}</p>}
+
           <div className="change-payment-method">
             If You try with Upi{" "}
-            <span
-              onClick={() => {
-                setMethod("upi");
-              }}
-            >
-              Click here
-            </span>
+            <span onClick={() => switchMethod("upi")}>Click here</span>
           </div>
         </div>
       )}
 
-      {method == "upi" && (
+      {method === "upi" && (
         <div className="form">
           <h5>Payment method : Upi</h5>
 
@@ -144,22 +161,19 @@ function Payment() {
           <input
             type="text"
             value={upi}
-            onChange={(e) => setUpi(e.target.value)}
+            onChange={(e) => setUpi(e.target.value.trim())}
             placeholder="example@upi"
           />
+
           {error && <p style={{ color: "red" }}>{error}</p>}
+
           <div className="change-payment-method">
             If you try with card{" "}
-            <span
-              onClick={() => {
-                setMethod("card");
-              }}
-            >
-              Click here
-            </span>
+            <span onClick={() => switchMethod("card")}>Click here</span>
           </div>
         </div>
       )}
+
       <button className="confirm-btn" onClick={handleConfirm}>
         Confirm Payment
       </button>

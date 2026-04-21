@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const {protect} = require("../middleware/authMiddleware");
+const { protect, adminOnly } = require("../middleware/authMiddleware");
+const { doubleCsrfProtection } = require("../utils/csrf");
 const {
   getPrograms,
   savePrograms,
 } = require("../controllers/programController");
 
 router.get("/", protect, getPrograms);
-router.post("/", protect, savePrograms);
+router.post("/", protect, adminOnly, doubleCsrfProtection, savePrograms);
 
 module.exports = router;
