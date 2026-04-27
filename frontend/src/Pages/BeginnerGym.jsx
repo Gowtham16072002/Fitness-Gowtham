@@ -5,6 +5,7 @@ import StrengthImage from "../assets/StrengthImage.jpeg";
 import NutritionImage from "../assets/NutritionImage.jpeg";
 import MembershipImage from "../assets/MembershipImage.jpeg";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 function BeginnerGym() {
   const navigate = useNavigate();
 
@@ -12,7 +13,7 @@ function BeginnerGym() {
     <>
       <div className='Beginner'>
 
-        <div onClick={() => { navigate("/cardio") }} className='Cardio'>
+        <div onClick={() => { navigate(ROUTES.CARDIO) }} className='Cardio'>
           <div className='picture'>
             <img src={CardioImage} alt="" />
           </div>
@@ -20,7 +21,7 @@ function BeginnerGym() {
         </div>
 
 
-        <div onClick={() => { navigate("/StrengthTraining") }} className='Strength'>
+        <div onClick={() => { navigate(ROUTES.STRENGTH_TRAINING) }} className='Strength'>
           <div className='picture'>
             <img src={StrengthImage} alt="" />
           </div>
@@ -28,14 +29,14 @@ function BeginnerGym() {
         </div>
 
 
-        <div onClick={() => { navigate("/Nutrition") }} className='Nutrition'>
+        <div onClick={() => { navigate(ROUTES.NUTRITION) }} className='Nutrition'>
           <div className='picture'>
             <img src={NutritionImage} alt="" />
           </div>
           <div className="title">NUTRITION</div>
         </div>
 
-        <div onClick={() => { navigate("/pricingplan/gym") }} className='Membership'>
+        <div onClick={() => { navigate(ROUTES.PRICING_PLAN.replace(":name", "gym")) }} className='Membership'>
           <div className='picture'>
             <img src={MembershipImage} alt="" />
           </div>

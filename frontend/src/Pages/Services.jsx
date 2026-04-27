@@ -3,6 +3,7 @@ import "../Styles/Services.css";
 import FooterAbove from "./FooterAbove";
 import ServiceDetails from "./ServiceDetails";
 import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 function Services() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ function Services() {
         <div className="service-btn-parent">
           <button
             onClick={() => {
-              navigate("/contact");
+              navigate(ROUTES.CONTACT);
             }}
             className="service-btn"
           >

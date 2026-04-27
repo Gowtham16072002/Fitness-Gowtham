@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/FooterAbove.css";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 function FooterAbove({ data }) {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function FooterAbove({ data }) {
 
           <button
             onClick={() => {
-              navigate("/contact");
+              navigate(ROUTES.CONTACT);
             }}
             className="cta-btn"
           >

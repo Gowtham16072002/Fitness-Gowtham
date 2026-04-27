@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/CommunitySection.css";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 function CommunitySection() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function CommunitySection() {
             <button className="community-btn">View Programs</button>
             <button
               onClick={() => {
-                navigate("/contact");
+                navigate(ROUTES.CONTACT);
               }}
               className="community-btn"
             >

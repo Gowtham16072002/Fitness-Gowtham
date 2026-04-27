@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { ROUTES } from "../constants/routes";
 
 function AboutTop() {
   const navigate = useNavigate();
@@ -54,11 +55,11 @@ function AboutTop() {
         </div>
       </div>
 
-      <button onClick={() => { navigate("/programs") }} className="about-btn">
+      <button onClick={() => { navigate(ROUTES.PROGRAMS) }} className="about-btn">
         Explore Programs
       </button>
 
-      <button onClick={() => { navigate("/contact") }} className="about-btn">Get Started</button>
+      <button onClick={() => { navigate(ROUTES.CONTACT) }} className="about-btn">Get Started</button>
 
       <button className="about-btn">
         Join Now

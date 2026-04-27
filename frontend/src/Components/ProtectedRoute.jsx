@@ -1,3 +1,5 @@
+import { ROUTES } from "../constants/routes";
+
 const { user, loading } = useContext(AuthContext);
 
 if (loading) {
@@ -5,7 +7,7 @@ if (loading) {
 }
 
 if (!user) {
-  return <Navigate to="/login" replace />;
+  return <Navigate to={ROUTES.LOGIN} replace />;
 }
 
 return children;

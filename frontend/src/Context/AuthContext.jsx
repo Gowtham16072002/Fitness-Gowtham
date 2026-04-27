@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         }
       );
     } catch (error) {
-      console.log("Logout error:", error);
+      // console.log("Logout error:", error);
     } finally {
       setUser(null);
       setCsrfToken("");

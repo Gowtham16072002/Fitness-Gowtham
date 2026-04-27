@@ -13,6 +13,7 @@ import {
     FaLayerGroup,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 
 function AdminDashBoard() {
 
@@ -131,19 +132,19 @@ function AdminDashBoard() {
                         </div>
 
                         <div className="quick-actions">
-                            <button onClick={() => navigate("/admin/trainers")}>
+                            <button onClick={() => navigate(ROUTES.ADMIN_TRAINERS)}>
                                 Add Trainer
                             </button>
 
-                            <button onClick={() => navigate("/admin/programs")}>
+                            <button onClick={() => navigate(ROUTES.ADMIN_PROGRAMS)}>
                                 Add Program
                             </button>
 
-                            <button onClick={() => navigate("/admin/testimonials")}>
+                            <button onClick={() => navigate(ROUTES.ADMIN_TESTIMONIALS)}>
                                 Add Testimonial
                             </button>
 
-                            <button onClick={() => navigate("/admin/home")}>
+                            <button onClick={() => navigate(ROUTES.ADMIN_HOME)}>
                                 Update Home Page
                             </button>
                         </div>

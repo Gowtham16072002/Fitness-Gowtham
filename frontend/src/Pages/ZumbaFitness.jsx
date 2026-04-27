@@ -5,6 +5,7 @@ import ZumbaGold from "../assets/ZumbaGold.png";
 import ZumbaChild from "../assets/ZumbaChild.png";
 import ZumbaSection from "../assets/ZumbaSection.png";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 function ZumbaFitness() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function ZumbaFitness() {
       <div className="ZumbaFitness">
         <div
           onClick={() => {
-            navigate("/zumbaClassic");
+            navigate(ROUTES.ZUMBA_CLASSIC);
           }}
           className="ZumbaClasic"
         >
@@ -24,7 +25,7 @@ function ZumbaFitness() {
         </div>
         <div
           onClick={() => {
-            navigate("/zumbaGold");
+            navigate(ROUTES.ZUMBA_GOLD);
           }}
           className="ZumbaGolden"
         >
@@ -35,7 +36,7 @@ function ZumbaFitness() {
         </div>
         <div
           onClick={() => {
-            navigate("/zumbaKids");
+            navigate(ROUTES.ZUMBA_KIDS);
           }}
           className="ZumbaKids"
         >
@@ -46,7 +47,7 @@ function ZumbaFitness() {
         </div>
         <div
           onClick={() => {
-            navigate("/pricingplan/ZumbaTraining");
+            navigate(ROUTES.PRICING_PLAN.replace(":name", "ZumbaTraining"));
           }}
           className="Membership"
         >

@@ -5,6 +5,7 @@ import Yogaimage from "../assets/YogaImage.jpeg";
 import Athleteimage from "../assets/AthleteImage.jpeg";
 import Zumbaimage from "../assets/ZumbaImage.jpeg";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 function Program2() {
   const navigate = useNavigate();
   return (
@@ -27,7 +28,7 @@ function Program2() {
           <button
             className="program2-btn"
             onClick={() => {
-              navigate("/beginnerGym");
+              navigate(ROUTES.BEGINNER_GYM);
             }}
           >
             Choose this Program
@@ -47,7 +48,7 @@ function Program2() {
           <button
             className="program2-btn"
             onClick={() => {
-              navigate("/beginnerYoga");
+              navigate(ROUTES.BEGINNER_YOGA);
             }}
           >
             Choose this Program
@@ -67,7 +68,7 @@ function Program2() {
           <button
             className="program2-btn"
             onClick={() => {
-              navigate("/zumbaFitness");
+              navigate(ROUTES.ZUMBA_FITNESS);
             }}
           >
             Choose this Program
@@ -87,7 +88,7 @@ function Program2() {
           <button
             className="program2-btn"
             onClick={() => {
-              navigate("/generalSports");
+              navigate(ROUTES.GENERAL_SPORTS);
             }}
           >
             Choose this Program

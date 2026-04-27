@@ -7,6 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { ROUTES } from "../constants/routes";
 
 function Footer() {
   return (
@@ -30,11 +31,11 @@ function Footer() {
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><Link className="Nav-route" to="/">Home</Link></li>
-            <li><Link className="Nav-route" to="/about">About</Link></li>
-            <li><Link className="Nav-route" to="/service">Services</Link></li>
-            <li><Link className="Nav-route" to="/programs">Programs</Link></li>
-            <li><Link className="Nav-route" to="/contact">Contact</Link></li>
+            <li><Link className="Nav-route" to={ROUTES.ROOT}>Home</Link></li>
+            <li><Link className="Nav-route" to={ROUTES.ABOUT}>About</Link></li>
+            <li><Link className="Nav-route" to={ROUTES.SERVICE}>Services</Link></li>
+            <li><Link className="Nav-route" to={ROUTES.PROGRAMS}>Programs</Link></li>
+            <li><Link className="Nav-route" to={ROUTES.CONTACT}>Contact</Link></li>
           </ul>
         </div>
 

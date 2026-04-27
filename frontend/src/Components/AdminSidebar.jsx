@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../Styles/AdminSidebar.css";
+import { ROUTES } from "../constants/routes";
 
 function AdminSidebar() {
   return (
@@ -13,7 +14,7 @@ function AdminSidebar() {
       <ul className="sidebar-menu">
         <li>
           <NavLink
-            to="/home"
+            to={ROUTES.HOME}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Go to Website
@@ -21,7 +22,7 @@ function AdminSidebar() {
         </li>
         <li>
           <NavLink
-            to="/admin/dashboard"
+            to={ROUTES.ADMIN_DASHBOARD}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Dashboard
@@ -30,7 +31,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/home"
+            to={ROUTES.ADMIN_HOME}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Home Page
@@ -39,7 +40,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/about"
+            to={ROUTES.ADMIN_ABOUT}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             About Page
@@ -48,7 +49,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/programs"
+            to={ROUTES.ADMIN_PROGRAMS}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Programs
@@ -57,7 +58,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/trainers"
+            to={ROUTES.ADMIN_TRAINERS}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Trainers
@@ -66,7 +67,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/testimonials"
+            to={ROUTES.ADMIN_TESTIMONIALS}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Testimonials
@@ -75,7 +76,7 @@ function AdminSidebar() {
 
         <li>
           <NavLink
-            to="/admin/settings"
+            to={ROUTES.ADMIN_SETTINGS}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >
             Settings

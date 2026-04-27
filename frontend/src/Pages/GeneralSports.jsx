@@ -5,6 +5,7 @@ import individualSports from "../assets/individualSports.png";
 import adventureSport from "../assets/adventureSport.png";
 import adventureSportmember from "../assets/adventureSportmember.png";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 function GeneralSports() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function GeneralSports() {
       <div className="GeneralSports">
         <div
           onClick={() => {
-            navigate("/teamSports");
+            navigate(ROUTES.TEAM_SPORTS);
           }}
           className="TeamSports"
         >
@@ -24,7 +25,7 @@ function GeneralSports() {
         </div>
         <div
           onClick={() => {
-            navigate("/individualSports");
+            navigate(ROUTES.INDIVIDUAL_SPORTS);
           }}
           className="IndividualSports"
         >
@@ -35,7 +36,7 @@ function GeneralSports() {
         </div>
         <div
           onClick={() => {
-            navigate("/adventureSports");
+            navigate(ROUTES.ADVENTURE_SPORTS);
           }}
           className="AdventureSports"
         >
@@ -46,7 +47,7 @@ function GeneralSports() {
         </div>
         <div
           onClick={() => {
-            navigate("/pricingplan/GeneralSportss");
+            navigate(ROUTES.PRICING_PLAN.replace(":name", "GeneralSortss"));
           }}
           className="Membership"
         >
