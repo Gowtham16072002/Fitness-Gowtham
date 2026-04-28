@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Home.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
+// import axios from "axios";
 import HomeMidsec from "./HomeMidsec";
 import FooterAbove from "./FooterAbove";
 import WhyChooseUs from "./WhyChooseUs";
@@ -10,13 +9,16 @@ import Program2 from "./Program2";
 import TrainerSection from "./TrainerSection";
 import Testimonials from "./Testimonials";
 
-import { AuthContext } from "../Context/AuthContext";
-import { API_BASE_URL } from "../config";
+// import { AuthContext } from "../Context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
+// import { API_BASE_URL } from "../config";
 import { ROUTES } from "../constants/routes";
+import { homeService } from "../services/homeService";
 
 function FitnessLanding() {
   const navigate = useNavigate();
-  const { user, loading: authLoading } = useContext(AuthContext);
+  // const { user, loading: authLoading } = useContext(AuthContext);
+  const { user, loading: authLoading } = useAuth();
 
   const [homeData, setHomeData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,9 +36,7 @@ function FitnessLanding() {
 
   const fetchHomeContent = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/home-content`, {
-        withCredentials: true,
-      });
+      const response = await homeService.getHomeContent();
 
       if (response?.data?.success) {
         setHomeData(response.data.data);

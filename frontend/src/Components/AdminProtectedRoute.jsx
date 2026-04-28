@@ -1,10 +1,12 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+// import { AuthContext } from "../Context/AuthContext";
 import { ROUTES } from "../constants/routes";
+import { useAuth } from "../hooks/useAuth";
 
 function AdminProtectedRoute() {
-  const { user, loading } = useContext(AuthContext);
+  // const { user, loading } = useContext(AuthContext);
+  const { user,loading } = useAuth();
 
   if (loading) {
     return <div>Loading...</div>;

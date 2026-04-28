@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import logo from "../assets/LogoIcon.png";
 import logoName from "../assets/LogoName.png";
 import "../Styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+// import { AuthContext } from "../Context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { IoSettingsOutline } from "react-icons/io5";
 import { ROUTES } from "../constants/routes";
 
@@ -11,7 +12,8 @@ function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState(false);
 
-  const { user, logout } = useContext(AuthContext);
+  // const { user, logout } = useContext(AuthContext);
+  const { user,logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {

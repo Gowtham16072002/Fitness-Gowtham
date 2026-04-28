@@ -1,14 +1,17 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import { API_BASE_URL } from "../config";
+import React, { useState } from "react";
+// import axios from "axios";
+// import { API_BASE_URL } from "../config";
+import { authService } from "../services/authService";
 import { ROUTES } from "../constants/routes";
 import { validateEmail, validatePassword } from "../utils/authValidation";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+// import { AuthContext } from "../Context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 function LoginForm() {
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    // const { login } = useContext(AuthContext);
+    const { login } = useAuth();
 
     const [formData, setFormData] = useState({
         emailAddress: "",
@@ -66,24 +69,16 @@ function LoginForm() {
         try {
             setLoading(true);
 
-            const response = await axios.post(
-                `${API_BASE_URL}/auth/login`,
-                {
-                    emailAddress: formData.emailAddress.trim(),
-                    passWord: formData.passWord.trim(),
-                },
-                {
-                    withCredentials: true,
-                }
-            );
+            const response = await authService.login({
+                emailAddress: formData.emailAddress.trim(),
+                passWord: formData.passWord.trim(),
+            });
 
             if (response?.data?.success) {
                 await login(response.data.user);
 
                 navigate(
-                    response.data.user.role === "admin"
-                        ? ROUTES.ADMIN_DASHBOARD
-                        : ROUTES.ROOT
+                    response.data.user.role === "admin" ? ROUTES.ADMIN_DASHBOARD : ROUTES.ROOT
                 );
             } else {
                 setServerError(response?.data?.message || "Login failed");

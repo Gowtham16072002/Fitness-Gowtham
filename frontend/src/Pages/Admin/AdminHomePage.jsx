@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
 import "../../Styles/AdminHomePage.css";
-import axios from "axios";
-import { API_BASE_URL } from "../../config";
-import { AuthContext } from "../../Context/AuthContext";
+import { homeService } from "../../services/homeService";
+import { authService } from "../../services/authService";
+import { useAuth } from "../../hooks/useAuth";
 
 function AdminHomePage() {
-  const { csrfToken } = useContext(AuthContext);
+  const { csrfToken } = useAuth();
 
   const [openSection, setOpenSection] = useState("hero");
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploadMessage, setUploadMessage] = useState("");
+
   const [formData, setFormData] = useState({
     hero: {
       heading: "",
@@ -48,9 +49,7 @@ function AdminHomePage() {
 
   const fetchHomeContent = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/home-content`, {
-        withCredentials: true,
-      });
+      const response = await homeService.getHomeContent();
 
       if (response?.data?.success) {
         setFormData(response.data.data);
@@ -177,9 +176,7 @@ function AdminHomePage() {
 
     const hasEmptyCards = formData.whyChooseUs.cards.some(
       (card) =>
-        !card.title?.trim() ||
-        !card.description?.trim() ||
-        !card.icon?.trim()
+        !card.title?.trim() || !card.description?.trim() || !card.icon?.trim()
     );
 
     if (hasEmptyCards) {
@@ -217,16 +214,7 @@ function AdminHomePage() {
     setUploadMessage("Uploading image... Please wait.");
 
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/api/upload`,
-        imageData,
-        {
-          withCredentials: true,
-          headers: {
-            "x-csrf-token": csrfToken,
-          },
-        }
-      );
+      const response = await homeService.uploadHomeImage(imageData, csrfToken);
 
       if (response?.data?.success) {
         setFormData((prev) => ({
@@ -243,9 +231,6 @@ function AdminHomePage() {
         alert(response?.data?.message || "Image upload failed");
       }
     } catch (error) {
-      // console.log("Upload error response:", error?.response);
-      // console.log("Upload error data:", error?.response?.data);
-
       setUploadMessage("Error uploading image.");
       alert(error?.response?.data?.message || "Error uploading image");
     } finally {
@@ -254,35 +239,44 @@ function AdminHomePage() {
   };
 
   const handleSubmit = async () => {
+    if (uploading) {
+      alert("Please wait until image upload is completed.");
+      return;
+    }
+
+    if (!validateBeforeSubmit()) {
+      return;
+    }
+
     try {
       setSaving(true);
 
-      // 🔥 ALWAYS GET FRESH CSRF TOKEN
-      const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
-        withCredentials: true,
-      });
+      const csrfRes = await authService.getCsrfToken();
+      const freshToken = csrfRes?.data?.csrfToken;
 
-      const freshToken = csrfRes.data.csrfToken;
+      if (!freshToken) {
+        alert("CSRF token not ready. Please try again.");
+        return;
+      }
 
-      const response = await axios.put(
-        `${API_BASE_URL}/api/home-content`,
+      const response = await homeService.updateHomeContent(
         {
           hero: formData.hero,
           stats: formData.stats,
           whyChooseUs: formData.whyChooseUs,
           cta: formData.cta,
         },
-        {
-          withCredentials: true,
-          headers: {
-            "x-csrf-token": freshToken, // 🔥 use fresh token
-          },
-        }
+        freshToken
       );
 
-      alert("Updated successfully!");
+      if (response?.data?.success) {
+        alert("Content updated successfully!");
+        fetchHomeContent();
+      } else {
+        alert(response?.data?.message || "Update failed");
+      }
     } catch (error) {
-      alert(error?.response?.data?.message || "Error");
+      alert(error?.response?.data?.message || "Error updating content");
     } finally {
       setSaving(false);
     }

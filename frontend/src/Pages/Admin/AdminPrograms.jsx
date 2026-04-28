@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
 import "../../Styles/AdminPrograms.css";
-import { API_BASE_URL } from "../../config";
-import { AuthContext } from "../../Context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
+import { authService } from "../../services/authService";
+import { programService } from "../../services/programService";
 
 function AdminPrograms() {
-  const { csrfToken } = useContext(AuthContext);
+  const { csrfToken } = useAuth();
 
   const [openSection, setOpenSection] = useState("hero");
   const [saving, setSaving] = useState(false);
@@ -81,46 +81,43 @@ function AdminPrograms() {
   });
 
   useEffect(() => {
-    const fetchPrograms = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/api/programs`, {
-          withCredentials: true,
-        });
-
-        const data = response?.data || {};
-
-        if (data.heroData) {
-          setHeroData({
-            title: data.heroData.title || "",
-            subtitle: data.heroData.subtitle || "",
-          });
-        }
-
-        if (Array.isArray(data.categoryData) && data.categoryData.length > 0) {
-          setCategoryData(data.categoryData);
-        }
-
-        if (Array.isArray(data.programList) && data.programList.length > 0) {
-          setProgramList(data.programList);
-        }
-
-        if (data.ctaData) {
-          setCtaData({
-            title: data.ctaData.title || "",
-            description: data.ctaData.description || "",
-            button1: data.ctaData.button1 || "",
-            button2: data.ctaData.button2 || "",
-          });
-        }
-      } catch (error) {
-        alert(error?.response?.data?.message || "Failed to load programs data");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchPrograms();
   }, []);
+
+  const fetchPrograms = async () => {
+    try {
+      const response = await programService.getPrograms();
+      const data = response?.data || {};
+
+      if (data.heroData) {
+        setHeroData({
+          title: data.heroData.title || "",
+          subtitle: data.heroData.subtitle || "",
+        });
+      }
+
+      if (Array.isArray(data.categoryData) && data.categoryData.length > 0) {
+        setCategoryData(data.categoryData);
+      }
+
+      if (Array.isArray(data.programList) && data.programList.length > 0) {
+        setProgramList(data.programList);
+      }
+
+      if (data.ctaData) {
+        setCtaData({
+          title: data.ctaData.title || "",
+          description: data.ctaData.description || "",
+          button1: data.ctaData.button1 || "",
+          button2: data.ctaData.button2 || "",
+        });
+      }
+    } catch (error) {
+      alert(error?.response?.data?.message || "Failed to load programs data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const toggleSection = (section) => {
     setOpenSection((prev) => (prev === section ? "" : section));
@@ -128,6 +125,7 @@ function AdminPrograms() {
 
   const handleHeroChange = (e) => {
     const { name, value } = e.target;
+
     setHeroData((prev) => ({
       ...prev,
       [name]: value,
@@ -148,6 +146,7 @@ function AdminPrograms() {
 
   const handleCtaChange = (e) => {
     const { name, value } = e.target;
+
     setCtaData((prev) => ({
       ...prev,
       [name]: value,
@@ -200,7 +199,7 @@ function AdminPrograms() {
     }
 
     const hasInvalidPrice = programList.some((item) =>
-      isNaN(Number(item.price))
+      Number.isNaN(Number(item.price))
     );
 
     if (hasInvalidPrice) {
@@ -222,35 +221,39 @@ function AdminPrograms() {
   };
 
   const handleSubmit = async () => {
+    if (!validateBeforeSubmit()) {
+      return;
+    }
+
     try {
       setSaving(true);
 
-      // 🔥 ALWAYS GET FRESH CSRF TOKEN
-      const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
-        withCredentials: true,
-      });
+      const csrfRes = await authService.getCsrfToken();
+      const freshToken = csrfRes?.data?.csrfToken;
 
-      const freshToken = csrfRes.data.csrfToken;
+      if (!freshToken) {
+        alert("CSRF token not ready. Please try again.");
+        return;
+      }
 
-      const response = await axios.put(
-        `${API_BASE_URL}/api/home-content`,
-        {
-          hero: formData.hero,
-          stats: formData.stats,
-          whyChooseUs: formData.whyChooseUs,
-          cta: formData.cta,
-        },
-        {
-          withCredentials: true,
-          headers: {
-            "x-csrf-token": freshToken, // 🔥 use fresh token
-          },
-        }
-      );
+      const payload = {
+        heroData,
+        categoryData,
+        programList,
+        ctaData,
+      };
 
-      alert("Updated successfully!");
+      const response = await programService.updatePrograms(payload, freshToken);
+
+      if (response?.data?.success === false) {
+        alert(response?.data?.message || "Update failed");
+        return;
+      }
+
+      alert("Programs updated successfully!");
+      fetchPrograms();
     } catch (error) {
-      alert(error?.response?.data?.message || "Error");
+      alert(error?.response?.data?.message || "Error saving programs data");
     } finally {
       setSaving(false);
     }

@@ -1,6 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
+import { authService } from "../services/authService";
 
 export const AuthContext = createContext();
 
@@ -12,9 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
-          withCredentials: true,
-        });
+        const csrfRes = await authService.getCsrfToken();
 
         if (csrfRes?.data?.success) {
           setCsrfToken(csrfRes.data.csrfToken);
@@ -22,9 +21,7 @@ export const AuthProvider = ({ children }) => {
           setCsrfToken("");
         }
 
-        const profileRes = await axios.get(`${API_BASE_URL}/auth/profile`, {
-          withCredentials: true,
-        });
+        const profileRes = await authService.getProfile();
 
         if (profileRes?.data?.success) {
           setUser(profileRes.data.user);
@@ -46,9 +43,10 @@ export const AuthProvider = ({ children }) => {
     setUser(userData);
 
     try {
-      const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
-        withCredentials: true,
-      });
+      // const csrfRes = await axios.get(`${API_BASE_URL}/auth/csrf-token`, {
+      //   withCredentials: true,
+      // });
+      const csrfRes = await authService.login();
 
       if (csrfRes?.data?.success) {
         setCsrfToken(csrfRes.data.csrfToken);
@@ -62,16 +60,17 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post(
-        `${API_BASE_URL}/auth/logout`,
-        {},
-        {
-          withCredentials: true,
-          headers: {
-            "x-csrf-token": csrfToken,
-          },
-        }
-      );
+      // await axios.post(
+      //   `${API_BASE_URL}/auth/logout`,
+      //   {},
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "x-csrf-token": csrfToken,
+      //     },
+      //   }
+      // );
+      await authService.logout(csrfToken);
     } catch (error) {
       // console.log("Logout error:", error);
     } finally {

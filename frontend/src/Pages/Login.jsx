@@ -1,13 +1,14 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Styles/Auth.css";
 import { ROUTES } from "../constants/routes";
 import LoginForm from "../Components/LoginForm";
-import { AuthContext } from "../Context/AuthContext";
+// import { AuthContext } from "../Context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 function Login() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (user?.role) {
