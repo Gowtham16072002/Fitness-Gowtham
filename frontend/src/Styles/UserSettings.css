@@ -1,0 +1,208 @@
+.userSettingContainer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.userSettingCard {
+  background: #ff9b9b;
+  max-width: 90%;
+  width: 700px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background:
+    linear-gradient(45deg, rgba(32, 32, 32, 1), rgba(24, 24, 24, 0.5)),
+    url("../assets/userProfileBanner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: auto;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  /* margin-bottom: 20px; */
+  color: white;
+  /* padding-bottom: 10px; */
+}
+
+/* Profile */
+.profileSection {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.userImage {
+  width: 100px;
+  height: 105px;
+  border-radius: 50%;
+  border: 3px solid rgb(248, 61, 61);
+}
+
+.userImage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+.userContent {
+  width: 250px;
+  color: white;
+}
+.userContent h5 {
+  font-size: large;
+}
+.userHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 90%; */
+}
+.userContent p {
+  font-size: 12px;
+  /* margin: 5px 0; */
+  color: rgb(187, 184, 184);
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+  padding: 5px;
+  color: white;
+  background: #ca0101;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.uploadBtn p {
+  color: white;
+}
+
+/* Divider */
+.divider {
+  width: 95%;
+  margin-bottom: 20px;
+  border-top: 1px solid white;
+}
+
+/* Form */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.formGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: whitesmoke;
+}
+
+.formGroup input {
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  background-color: rgba(24, 24, 24, 0.8);
+}
+
+.formGroup span {
+  color: red;
+  font-size: 12px;
+  /* margin-top: 3px; */
+}
+.Phone {
+  width: 50% !important;
+}
+.changePassword button {
+  color: white;
+  background-color: #ca0101;
+  padding: 5px;
+  border-radius: 8px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.fullWidth {
+  width: 50%;
+}
+
+/* Buttons */
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.saveBtn {
+  padding: 10px 16px;
+  background: #ca0101;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.saveBtn:hover {
+  background: #a80000;
+}
+
+.cancelBtn {
+  padding: 10px 16px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #c5c5c5;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color:black;
+  color:rgb(245, 87, 87);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 32px;
+  font-weight: bold; */
+  font-size: 3rem;
+    font-weight: 800;
+}

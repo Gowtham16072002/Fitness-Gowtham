@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/LogoIcon.png";
 import logoName from "../assets/LogoName.png";
 import "../Styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../Context/AuthContext";
 import { useAuth } from "../hooks/useAuth";
 import { IoSettingsOutline } from "react-icons/io5";
 import { ROUTES } from "../constants/routes";
+import UserSettings from "../Pages/UserSettings";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState(false);
-
-  // const { user, logout } = useContext(AuthContext);
-  const { user,logout } = useAuth();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -34,6 +33,10 @@ function NavBar() {
       .map((char, index) => (index === 0 ? char.toUpperCase() : char))
       .join("");
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <nav className="navbar">
@@ -93,15 +96,24 @@ function NavBar() {
           </Link>
         ) : (
           <div>
-            <div className="user-logo" onClick={() => setOpenDrop(!openDrop)}>
-              <span>{getInitial(user.fullName)}</span>
-            </div>
+            {!user?.profile ? (
+              <div className="user-logo" onClick={() => setOpenDrop(!openDrop)}>
+                <span>{getInitial(user.fullName)}</span>
+              </div>
+            ) : (
+              <div className="user-logo" onClick={() => setOpenDrop(!openDrop)}>
+                <img src={user.profile} alt="" />
+              </div>
+            )}
 
             {openDrop && (
               <div className="dropdown">
                 <p className="userName">{formatName(user.fullName)}</p>
 
-                <p className="dropdown-settings">
+                <p
+                  className="dropdown-settings"
+                  onClick={() => setDialogOpen(true)}
+                >
                   <IoSettingsOutline />
                   Settings
                 </p>
@@ -114,6 +126,7 @@ function NavBar() {
           </div>
         )}
       </div>
+      <UserSettings open={dialogOpen} close={() => setDialogOpen(false)} />
     </nav>
   );
 }

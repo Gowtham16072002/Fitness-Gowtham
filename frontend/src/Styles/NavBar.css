@@ -120,6 +120,14 @@
   color: white;
 }
 
+.user-logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid rgb(245, 87, 87);
+  object-fit:cover;
+}
+
 .user-logo:hover {
   box-shadow: 0 0 40px rgb(233, 6, 6);
 }
@@ -138,11 +146,12 @@
   border-radius: 10px;
 }
 
-.dropdown-settings{
+.dropdown-settings {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 4px;
+  cursor: pointer;
 }
 
 .dropdown button {
@@ -160,7 +169,7 @@
   background: rgb(233, 6, 6);
 }
 
-.userName{
+.userName {
   font-weight: 800;
 }
 
@@ -171,11 +180,11 @@
   cursor: pointer;
 }
 
-.dropdown-button{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.dropdown-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
