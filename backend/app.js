@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const enforceHTTPS = require("./middleware/httpsMiddleware");
+const aboutContentRoute = require("./Routes/aboutContentRoute");
 
 const authRoutes = require("./Routes/authRoute.js");
 const homeContentRoutes = require("./Routes/homeContentRoute.js");
@@ -25,6 +26,7 @@ app.use(express.json());
 
 app.use("/auth", authRoutes);
 app.use("/api/home-content", homeContentRoutes);
+app.use("/api/about-content", aboutContentRoute);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/programs", programRoutes);
 
