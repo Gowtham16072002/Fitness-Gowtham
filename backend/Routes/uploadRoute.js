@@ -34,7 +34,6 @@ const upload = multer({
 router.post(
   "/",
   protect,
-  adminOnly,
   doubleCsrfProtection,
   (req, res, next) => {
     upload.single("image")(req, res, (err) => {

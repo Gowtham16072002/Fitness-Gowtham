@@ -28,8 +28,9 @@ const userSchema = new mongoose.Schema(
       enum: ["admin", "user"],
       default: "user",
     },
+    profile: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const userModel = mongoose.model("User", userSchema);

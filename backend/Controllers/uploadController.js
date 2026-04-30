@@ -23,7 +23,7 @@ const uploadImage = async (req, res) => {
             } else {
               resolve(result);
             }
-          }
+          },
         );
 
         streamifier.createReadStream(buffer).pipe(stream);

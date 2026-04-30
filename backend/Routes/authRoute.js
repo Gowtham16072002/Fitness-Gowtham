@@ -4,12 +4,12 @@ const {
   signUp,
   logout,
   profile,
+  updateProfile,
+  changePassword,
+  saveChanges,
 } = require("../Controllers/authController");
 const { protect, adminOnly } = require("../middleware/authMiddleware");
-const {
-  generateCsrfToken,
-  doubleCsrfProtection,
-} = require("../utils/csrf");
+const { generateCsrfToken, doubleCsrfProtection } = require("../utils/csrf");
 
 const authRoutes = express.Router();
 
@@ -41,5 +41,8 @@ authRoutes.get("/admin-test", protect, adminOnly, (req, res) => {
     user: req.user,
   });
 });
+authRoutes.route("/update-profile").put(protect, updateProfile);
+authRoutes.route("/changePassword").put(protect, changePassword);
+authRoutes.route("/saveChanges").put(protect, saveChanges);
 
 module.exports = authRoutes;

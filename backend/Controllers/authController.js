@@ -15,7 +15,7 @@
 //   );
 // };
 
-// //LOGIN 
+// //LOGIN
 // const login = async (req, res) => {
 //   try {
 //     const { emailAddress, passWord } = req.body;
@@ -56,7 +56,7 @@
 
 //     return res.cookie("token", token, {
 //       httpOnly: true,
-//       secure: false, 
+//       secure: false,
 //       sameSite: "lax",
 //       maxAge: 24 * 60 * 60 * 1000,
 //     })
@@ -64,7 +64,7 @@
 //       .json({
 //         success: true,
 //         message: "Login successful",
-//         token, 
+//         token,
 //         user: {
 //           id: user._id,
 //           fullName: user.fullName,
@@ -250,9 +250,6 @@
 
 // module.exports = { login, signUp, logout, profile };
 
-
-
-
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const userModel = require("../models/userModel");
@@ -266,7 +263,7 @@ const generateToken = (user) => {
       emailAddress: user.emailAddress,
     },
     process.env.JWT_SECRET,
-    { expiresIn: "7d" }
+    { expiresIn: "7d" },
   );
 };
 
@@ -289,7 +286,9 @@ const sanitizeEmail = (value) => {
 };
 
 const sanitizePhone = (value) => {
-  return String(value || "").replace(/\D/g, "").slice(0, 10);
+  return String(value || "")
+    .replace(/\D/g, "")
+    .slice(0, 10);
 };
 
 // LOGIN
@@ -344,6 +343,7 @@ const login = async (req, res) => {
           emailAddress: user.emailAddress,
           phoneNumber: user.phoneNumber,
           role: user.role,
+          profile: user.profile,
         },
       });
   } catch (error) {
@@ -456,6 +456,7 @@ const signUp = async (req, res) => {
       phoneNumber,
       passWord: hashedPassword,
       role: "user",
+      profile: "",
     });
 
     return res.status(201).json({
@@ -490,6 +491,7 @@ const logout = (req, res) => {
 // PROFILE
 const profile = async (req, res) => {
   try {
+    console.log(req.user);
     if (req.user) {
       return res.json({
         success: true,
@@ -509,4 +511,195 @@ const profile = async (req, res) => {
   }
 };
 
-module.exports = { login, signUp, logout, profile };
+//Update profille
+const updateProfile = async (req, res) => {
+  try {
+    const { emailAddress, phoneNumber, fullName, profile } = req.body;
+    const user = req.user;
+    const isexist = await userModel.findOne({
+      $or: [{ emailAddress }, { fullName }, { phoneNumber }],
+    });
+    if (isexist) {
+      if (isexist.fullName == fullName) {
+        return res.json({
+          success: false,
+          message: "user fullName already exist",
+        });
+      }
+      if (isexist.emailAddress == emailAddress) {
+        return res.json({
+          success: false,
+          message: "user emailAddress already exist",
+        });
+      }
+      if (isexist.phoneNumber == phoneNumber) {
+        console.log(phoneNumber);
+
+        return res.json({
+          success: false,
+          message: "user phoneNumber already exist",
+        });
+      }
+    }
+    const updateUser = await userModel.updateOne(
+      { _id: user._id },
+      {
+        emailAddress,
+        phoneNumber,
+        fullName,
+        profile,
+      },
+    );
+    if (updateUser) {
+      return res.json({
+        success: true,
+        message: "update user successfully",
+      });
+    }
+    return res.json({
+      success: false,
+      message: "user can`t update",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      success: false,
+      message: "error from user update",
+      error: error.message,
+    });
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const user = req.user;
+    console.log(req.body);
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+    if (!oldPassword) {
+      return res.json({
+        success: false,
+        message: "old password is required",
+      });
+    }
+    if (!newPassword) {
+      return res.json({
+        success: false,
+        message: "new password is required",
+      });
+    }
+    if (!confirmPassword) {
+      return res.json({
+        success: false,
+        message: "confirm password is required",
+      });
+    }
+    if (newPassword != confirmPassword) {
+      return res.json({
+        success: false,
+        message: "password can`t same",
+      });
+    }
+    const isExist = await userModel.findOne({
+      emailAddress: user.emailAddress,
+    });
+    const comparePassword = await bcrypt.compare(oldPassword, isExist.passWord);
+    if (comparePassword) {
+      const encryptedPassword = await bcrypt.hash(confirmPassword, 10);
+      isExist.passWord = encryptedPassword;
+      await isExist.save();
+    }
+    return res.json({
+      success: true,
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      success: false,
+      message: "error from changePassword",
+      error: error.message,
+    });
+  }
+};
+
+//SaveChanges
+
+const saveChanges = async (req, res) => {
+  try {
+    const { fullName, emailAddress, phoneNumber, profile } = req.body;
+
+    if (!fullName) {
+      return res.json({ success: false, message: "fullName is required" });
+    }
+
+    if (!emailAddress) {
+      return res.json({ success: false, message: "emailAddress is required" });
+    }
+
+    if (!phoneNumber) {
+      return res.json({ success: false, message: "phoneNumber is required" });
+    }
+
+    // exclude current user
+    const emailExists = await userModel.findOne({
+      emailAddress,
+      _id: { $ne: req.user._id },
+    });
+
+    const phoneExists = await userModel.findOne({
+      phoneNumber,
+      _id: { $ne: req.user._id },
+    });
+
+    if (emailExists) {
+      return res.json({
+        success: false,
+        message: "Email already exists",
+      });
+    }
+
+    if (phoneExists) {
+      return res.json({
+        success: false,
+        message: "Phone already exists",
+      });
+    }
+
+    const updatedUser = await userModel.updateOne(
+      { _id: req.user._id },
+      {
+        fullName,
+        emailAddress,
+        phoneNumber,
+        profile,
+      },
+    );
+
+    res.json({
+      success: true,
+      user: updatedUser,
+    });
+
+    return res.json({
+      success: true,
+      message: "Profile updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      success: false,
+      message: "error from saveChanges",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = {
+  login,
+  signUp,
+  logout,
+  profile,
+  updateProfile,
+  changePassword,
+  saveChanges,
+};
