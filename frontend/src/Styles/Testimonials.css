@@ -50,6 +50,23 @@
   line-height: 1.6;
 }
 
+
+.testimonial-subtitle {
+  max-width: 720px;
+  margin: -30px auto 45px;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.testimonial-role {
+  display: block;
+  font-size: 13px;
+  color: #ef4444;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .stars {
   color: gold;
   margin-top: 10px;

@@ -63,7 +63,8 @@
 }
 
 .section-body input,
-.section-body textarea {
+.section-body textarea,
+.section-body select {
   width: 100%;
   padding: 16px 18px;
   margin-bottom: 22px;
@@ -81,7 +82,8 @@
 }
 
 .section-body input:focus,
-.section-body textarea:focus {
+.section-body textarea:focus,
+.section-body select:focus {
   border-color: #ef4444;
 }
 
