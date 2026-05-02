@@ -3,7 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const enforceHTTPS = require("./middleware/httpsMiddleware");
 const aboutContentRoute = require("./Routes/aboutContentRoute");
-
+const dashboardRoute = require("./Routes/dashboardRoute");
 const authRoutes = require("./Routes/authRoute.js");
 const homeContentRoutes = require("./Routes/homeContentRoute.js");
 const uploadRoutes = require("./Routes/uploadRoute.js");
@@ -33,6 +33,7 @@ app.use("/api/trainer-content", trainerContentRoute);
 app.use("/api/testimonial-content", testimonialContentRoute); 
 app.use("/api/upload", uploadRoutes);
 app.use("/api/programs", programRoutes);
+app.use("/api/admin/dashboard", dashboardRoute);
 
 app.get("/", (req, res) => {
   res.send("Fitness backend is running");

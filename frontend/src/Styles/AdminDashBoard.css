@@ -66,6 +66,18 @@
   transition: 0.3s ease;
 }
 
+
+
+.dashboard-loading {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
 .dashboard-card:hover {
   transform: translateY(-4px);
 }
