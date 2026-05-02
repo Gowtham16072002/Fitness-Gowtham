@@ -6,9 +6,10 @@ const { doubleCsrfProtection } = require("../utils/csrf");
 const {
   getPrograms,
   savePrograms,
-} = require("../controllers/programController");
+} = require("../Controllers/programController");
 
-router.get("/", protect, getPrograms);
+// router.get("/", protect, getPrograms);
+router.get("/", getPrograms);
 router.post("/", protect, adminOnly, doubleCsrfProtection, savePrograms);
 
 module.exports = router;

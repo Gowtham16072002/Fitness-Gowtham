@@ -1,0 +1,58 @@
+.admin-select {
+  width: 100%;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+  color: #222;
+  background: #fff;
+}
+
+.admin-select:focus {
+  border-color: #ef4444;
+}
+
+.include-field-row {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.include-field-row input {
+  margin-bottom: 0;
+}
+
+.mini-delete-btn {
+  height: 54px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mini-delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.service-small-add {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .include-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-delete-btn {
+    width: 100%;
+  }
+}

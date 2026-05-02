@@ -49,6 +49,15 @@ function AdminSidebar() {
 
         <li>
           <NavLink
+            to={ROUTES.ADMIN_SERVICES}
+            className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
+          >
+            Services Page
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
             to={ROUTES.ADMIN_PROGRAMS}
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
           >

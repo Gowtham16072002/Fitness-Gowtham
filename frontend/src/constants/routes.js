@@ -36,6 +36,7 @@ export const ROUTES = {
   ADMIN_ABOUT: "/admin/about",
   ADMIN_TRAINERS: "/admin/trainers",
   ADMIN_PROGRAMS: "/admin/programs",
+  ADMIN_SERVICES: "/admin/services",
   ADMIN_TESTIMONIALS: "/admin/testimonials",
   ADMIN_SETTINGS: "/admin/settings",
 };

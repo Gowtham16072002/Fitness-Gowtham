@@ -35,6 +35,7 @@ import AdminAboutPage from "./Pages/Admin/AdminAboutPage";
 import AdminDashBoard from "./Pages/Admin/AdminDashBoard";
 import AdminTrainers from "./Pages/Admin/AdminTrainers";
 import AdminPrograms from "./Pages/Admin/AdminPrograms";
+import AdminServices from "./Pages/Admin/AdminServices";
 import AdminTestimonials from "./Pages/Admin/AdminTestimonials";
 import AdminSettings from "./Pages/Admin/AdminSettings";
 import { ROUTES } from "./constants/routes";
@@ -78,6 +79,7 @@ function App() {
           <Route path={ROUTES.ADMIN_ABOUT} element={<AdminAboutPage />} />
           <Route path={ROUTES.ADMIN_TRAINERS} element={<AdminTrainers />} />
           <Route path={ROUTES.ADMIN_PROGRAMS} element={<AdminPrograms />} />
+          <Route path={ROUTES.ADMIN_SERVICES} element={<AdminServices />} />
           <Route path={ROUTES.ADMIN_TESTIMONIALS} element={<AdminTestimonials />} />
           <Route path={ROUTES.ADMIN_SETTINGS} element={<AdminSettings />} />
         </Route>

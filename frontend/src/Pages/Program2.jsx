@@ -100,3 +100,68 @@ function Program2() {
 }
 
 export default Program2;
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import "../Styles/Program2.css";
+// import { useNavigate } from "react-router-dom";
+// import { ROUTES } from "../constants/routes";
+// import { programService } from "../services/programService";
+
+// function Program2() {
+//   const navigate = useNavigate();
+//   const [programs, setPrograms] = useState([]);
+
+//   useEffect(() => {
+//     fetchPrograms();
+//   }, []);
+
+//   const fetchPrograms = async () => {
+//     try {
+//       const res = await programService.getPrograms();
+//       if (res.data.success) {
+//         setPrograms(res.data.data.programs);
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   return (
+//     <div className="programs-section">
+//       <div className="prg-header">
+//         <h1>Our Fitness Programs</h1>
+//       </div>
+
+//       <div className="programs-container">
+//         {programs.map((item, index) => (
+//           <div className="program-card" key={index}>
+//             <div className="image-box">
+//               <img src={item.image || "https://via.placeholder.com/300"} alt="" />
+//             </div>
+
+//             <h3>{item.title}</h3>
+
+//             <ul>
+//               {item.features.map((f, i) => (
+//                 <li key={i}>{f}</li>
+//               ))}
+//             </ul>
+
+//             <button
+//               className="program2-btn"
+//               onClick={() => navigate(ROUTES[item.route])}
+//             >
+//               Choose this Program
+//             </button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Program2;

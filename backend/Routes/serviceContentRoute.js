@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    getAboutContent,
-    updateAboutContent,
-} = require("../Controllers/aboutContentController");
+    getServiceContent,
+    updateServiceContent,
+} = require("../Controllers/serviceContentController");
 
 const { protect, adminOnly } = require("../middleware/authMiddleware");
 const { doubleCsrfProtection } = require("../utils/csrf");
 
-router.get("/", getAboutContent);
-router.put("/", protect, adminOnly, doubleCsrfProtection, updateAboutContent);
+router.get("/", getServiceContent);
+router.put("/", protect, adminOnly, doubleCsrfProtection, updateServiceContent);
 
 module.exports = router;

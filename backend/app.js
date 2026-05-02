@@ -10,10 +10,11 @@ const uploadRoutes = require("./Routes/uploadRoute.js");
 const programRoutes = require("./Routes/programRoutes.js");
 const trainerContentRoute = require("./Routes/trainerContentRoute");
 const testimonialContentRoute = require("./Routes/testimonialContentRoute");
+const serviceContentRoute = require("./Routes/serviceContentRoute");
 
 const app = express();
 
-// Enforce HTTPS only in production
+
 app.use(enforceHTTPS);
 
 app.use(
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/api/home-content", homeContentRoutes);
 app.use("/api/about-content", aboutContentRoute);
+app.use("/api/service-content", serviceContentRoute);
 app.use("/api/trainer-content", trainerContentRoute);
 app.use("/api/testimonial-content", testimonialContentRoute); 
 app.use("/api/upload", uploadRoutes);
